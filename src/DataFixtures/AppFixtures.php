@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\User;
 use Faker\Generator;
 use App\Entity\Article;
 use Doctrine\Persistence\ObjectManager;
@@ -27,6 +28,18 @@ class AppFixtures extends Fixture
             ->setContenu($this->faker->paragraph($nbSentences = 20));
 
             $manager->persist($article);
+        }
+
+        for ($i=0; $i < 20 ; $i++) { 
+            $user = new User();
+            $user->setEmail($this->faker->email())
+            ->setRoles(['ROLE_USER'])
+            ->setPlainPassword('password')
+            ->setNom($this->faker->firstName())
+            ->setPrenom($this->faker->lastName())
+            ->setTelephone($this->faker->numberBetween(100000000, 999999999));
+
+            $manager->persist($user);
         }
 
         $manager->flush();
