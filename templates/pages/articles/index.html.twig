@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink - Blog
+{% endblock %}
+
+{% block body %}
+	{% if not articles.items is same as([]) %}
+		<h1>Nos articles</h1>
+		<div>
+			<h4>
+				Il y a
+				{{ articles.getTotalItemCount }}
+				articles au total
+			</h4>
+		</div>
+
+		<div>
+			{% for article in articles %}
+				<div>
+					{# <img src="#"> #}
+					<h4>{{article.titre}}</h4>
+					<p>{{article.sujet}}</p>
+					<div>
+						<p>{{article.contenu|slice(0, 50) ~ '...' }}</p>
+					</div>
+					<small>{{article.date|date('d/m/Y')}}</small>
+				</div>
+			{% endfor %}
+		</div>
+		<div>
+			{{ knp_pagination_render(articles) }}
+		</div>
+	{% else %}
+		<h4>Il n'y a pas d'articles en ce moment</h4>
+	{% endif %}
+{% endblock %}

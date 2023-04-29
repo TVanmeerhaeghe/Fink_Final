@@ -31,7 +31,7 @@ class Article
     #[Assert\NotBlank()]
     private ?string $contenu = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column]
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $date = null;
 
