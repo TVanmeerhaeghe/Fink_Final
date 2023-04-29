@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
             $article = new Article();
             $article->setTitre($this->faker->sentence($nbWords = 5, $variableNbWords = true))
             ->setSujet($this->faker->sentence($nbWords = 5, $variableNbWords = true))
-            ->setContenu($this->faker->paragraph());
+            ->setContenu($this->faker->paragraph($nbSentences = 20));
 
             $manager->persist($article);
         }

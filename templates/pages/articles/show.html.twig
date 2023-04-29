@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink -
+	{{article.titre}}
+{% endblock %}
+
+{% block body %}
+	<div>
+		{# <img src="#"> #}
+		<h4>{{article.titre}}</h4>
+		<p>{{article.sujet}}</p>
+		<div>
+			<p>{{article.contenu}}</p>
+		</div>
+		<small>{{article.date|date('d/m/Y')}}</small>
+	</div>
+{% endblock %}

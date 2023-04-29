@@ -26,8 +26,8 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/blog/{id}', name: 'blog.show', methods:['GET'])]
-    public function show(): Response
+    public function show(Article $article): Response
     {
-        
+        return $this->render('pages/articles/show.html.twig', ['article' => $article]);
     }
 }
