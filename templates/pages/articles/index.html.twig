@@ -24,6 +24,7 @@
 						<p>{{article.contenu|slice(0, 50) ~ '...' }}</p>
 					</div>
 					<small>{{article.date|date('d/m/Y')}}</small>
+					<a href="{{ path('blog.show', {id: article.id}) }}">Voir plus</a>
 				</div>
 			{% endfor %}
 		</div>
