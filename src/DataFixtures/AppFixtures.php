@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\User;
 use Faker\Generator;
+use App\Entity\Salon;
 use App\Entity\Article;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -30,16 +31,38 @@ class AppFixtures extends Fixture
             $manager->persist($article);
         }
 
+        $users = [];
+
         for ($i=0; $i < 20 ; $i++) { 
             $user = new User();
             $user->setEmail($this->faker->email())
-            ->setRoles(['ROLE_USER'])
+            ->setRoles($this->faker->randomElement([['ROLE_USER'], ['ROLE_USER', 'ROLE_TATOUEUR']]))
             ->setPlainPassword('password')
             ->setNom($this->faker->firstName())
             ->setPrenom($this->faker->lastName())
             ->setTelephone($this->faker->numberBetween(100000000, 999999999));
 
+            $users[] = $user;
             $manager->persist($user);
+        }
+
+        for ($i=0; $i < 10 ; $i++) { 
+            $salon = new Salon();
+            $salon->setNom($this->faker->word())
+            ->setAdresse($this->faker->streetAddress())
+            ->setTelephone($this->faker->numberBetween(100000000, 999999999))
+            ->setDescription($this->faker->paragraph($nbSentences = 20))
+            ->setVille($this->faker->city());
+            // Filtrer les utilisateurs ayant les rôles spécifiques
+            $usersWithRole = array_filter($users, function($user) {
+                return in_array('ROLE_USER', $user->getRoles()) && in_array('ROLE_TATOUEUR', $user->getRoles());
+            });
+
+            // Choisir un propriétaire aléatoire parmi les utilisateurs filtrés
+            $proprietaire = $usersWithRole[array_rand($usersWithRole)];
+            $salon->setPropriétaire($proprietaire);
+        
+            $manager->persist($salon);
         }
 
         $manager->flush();
