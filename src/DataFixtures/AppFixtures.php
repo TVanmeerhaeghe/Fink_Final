@@ -52,6 +52,7 @@ class AppFixtures extends Fixture
             ->setAdresse($this->faker->streetAddress())
             ->setTelephone($this->faker->numberBetween(100000000, 999999999))
             ->setDescription($this->faker->paragraph($nbSentences = 20))
+            ->setEmail($this->faker->email())
             ->setVille($this->faker->city());
             // Filtrer les utilisateurs ayant les rôles spécifiques
             $usersWithRole = array_filter($users, function($user) {

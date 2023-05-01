@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink - Les salons
+{% endblock %}
+
+{% block body %}
+	{% if not salons.items is same as([]) %}
+		<h1>Les salons</h1>
+
+		<div>
+			{% for salon in salons %}
+				<div>
+					{# <img src="#"> #}
+					<h4>{{salon.nom}}</h4>
+					<p>{{salon.ville}}</p>
+					<p>{{salon.adresse}}</p>
+					<a href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div>
+			{{ knp_pagination_render(salons) }}
+		</div>
+	{% else %}
+		<h4>Il n'y a pas de salon actuellement</h4>
+	{% endif %}
+{% endblock %}

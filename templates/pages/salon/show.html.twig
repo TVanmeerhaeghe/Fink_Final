@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink -
+	{{salon.nom}}
+{% endblock %}
+
+{% block body %}
+	<div>
+		<div>
+			{# <img src="#"> #}
+			<h4>{{salon.nom}}</h4>
+			<p>{{salon.ville}}</p>
+			<p>{{salon.adresse}}</p>
+			<p>{{salon.telephone}}</p>
+			<p>{{salon.email}}</p>
+		</div>
+		<div>
+			<p>{{salon.description}}</p>
+		</div>
+		<div>
+			<p>Propiétaire
+			</p>
+			<p>{{ salon.propriétaire.nom }}
+				{{ salon.propriétaire.prenom }}</p>
+		</div>
+	</div>
+{% endblock %}
