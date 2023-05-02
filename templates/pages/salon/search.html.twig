@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink - Votre Recherche
+{% endblock %}
+
+{% block body %}
+	{% if not salonsSearch.items is same as([]) %}
+		<h1>Votre Recherche</h1>
+
+		<div>
+			{% for salonSearch in salonsSearch %}
+				<div>
+					{# <img src="#"> #}
+					<h4>{{salonSearch.nom}}</h4>
+					<p>{{salonSearch.ville}}</p>
+					<p>{{salonSearch.style}}</p>
+					<a href="{{ path('salon.show', {id: salonSearch.id}) }}">Voir plus</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div>
+			{{ knp_pagination_render(salonsSearch) }}
+		</div>
+	{% else %}
+		<h4>Aucun salon ne correspond a votre recherche</h4>
+	{% endif %}
+{% endblock %}

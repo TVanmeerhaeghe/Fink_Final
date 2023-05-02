@@ -1,0 +1,15 @@
+{% if form %}
+	{{ form_start(form) }}
+	<div>
+		<div>
+			<div>
+				{{ form_widget(form.q) }}
+				{{ form_errors(form.q) }}
+			</div>
+			<div>
+				<button type="submit" id="button-addon2">Rechercher</button>
+			</div>
+		</div>
+	</div>
+	{{ form_end(form) }}
+{% endif %}

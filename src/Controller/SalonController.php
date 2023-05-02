@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SalonController extends AbstractController
 {
-    #[Route('/salons', name: 'salon.index')]
+    #[Route('/salons', name: 'salon.index', methods:['GET'])]
     public function index(SalonRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $salons = $paginator->paginate(

@@ -46,6 +46,7 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+
         for ($i=0; $i < 10 ; $i++) { 
             $salon = new Salon();
             $salon->setNom($this->faker->word())
@@ -53,7 +54,35 @@ class AppFixtures extends Fixture
             ->setTelephone($this->faker->numberBetween(100000000, 999999999))
             ->setDescription($this->faker->paragraph($nbSentences = 20))
             ->setEmail($this->faker->email())
-            ->setVille($this->faker->city());
+            ->setVille($this->faker->randomElement(['Lille', 'Marseille', 'Paris']))
+            ->setStyle($this->faker->randomElement([
+                'Old School',
+                'New School',
+                'Blackwork',
+                'Dotwork',
+                'Tribal',
+                'Realiste',
+                'Aquarelle',
+                'Neo-traditionnel',
+                'Geometrique',
+                'Trash Polka',
+                'Maori',
+                'Japonais',
+                'Calligraphie',
+                'Minimaliste',
+                'Symbole',
+                'Lettrage',
+                'Ornemental',
+                'Bio-mecanique',
+                'Cartoon',
+                'Portrait',
+                'Graffiti',
+                'Couleur',
+                'Gravure',
+                'Religieux',
+                'Fantaisie',
+                'Abstrait'
+            ]));
             // Filtrer les utilisateurs ayant les rôles spécifiques
             $usersWithRole = array_filter($users, function($user) {
                 return in_array('ROLE_USER', $user->getRoles()) && in_array('ROLE_TATOUEUR', $user->getRoles());
