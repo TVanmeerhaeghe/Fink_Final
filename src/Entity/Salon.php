@@ -38,7 +38,7 @@ class Salon
     private ?string $Ville = null;
 
     #[ORM\ManyToOne(inversedBy: 'salons')]
-    private ?User $Propriétaire = null;
+    private ?User $Proprietaire = null;
 
     #[ORM\Column(length: 180)]
     #[Assert\Email()]
@@ -135,14 +135,14 @@ class Salon
         return $this;
     }
 
-    public function getPropriétaire(): ?User
+    public function getProprietaire(): ?User
     {
-        return $this->Propriétaire;
+        return $this->Proprietaire;
     }
 
-    public function setPropriétaire(?User $Propriétaire): self
+    public function setProprietaire(?User $Proprietaire): self
     {
-        $this->Propriétaire = $Propriétaire;
+        $this->Proprietaire = $Proprietaire;
 
         return $this;
     }

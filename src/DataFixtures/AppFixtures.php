@@ -34,6 +34,17 @@ class AppFixtures extends Fixture
 
         $users = [];
 
+        $admin = new User();
+        $admin->setTelephone($this->faker->numberBetween(100000000, 999999999))
+            ->setNom('admin')
+            ->setPrenom('admin')
+            ->setEmail('admin@fink.fr')
+            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
+            ->setPlainPassword('password');
+
+        $users[] = $admin;
+        $manager->persist($admin);
+
         for ($i=0; $i < 20 ; $i++) { 
             $user = new User();
             $user->setEmail($this->faker->email())
@@ -91,7 +102,7 @@ class AppFixtures extends Fixture
 
             // Choisir un propriétaire aléatoire parmi les utilisateurs filtrés
             $proprietaire = $usersWithRole[array_rand($usersWithRole)];
-            $salon->setPropriétaire($proprietaire)
+            $salon->setProprietaire($proprietaire)
             ->setImage('images/salon/tattoo-shop-sign.jpg');
         
             $manager->persist($salon);

@@ -59,7 +59,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'Propriétaire', targetEntity: Salon::class)]
+    #[ORM\OneToMany(mappedBy: 'Proprietaire', targetEntity: Salon::class)]
     private Collection $salons;
 
     public function __construct()
@@ -223,7 +223,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->salons->contains($salon)) {
             $this->salons->add($salon);
-            $salon->setPropriétaire($this);
+            $salon->setProprietaire($this);
         }
 
         return $this;
@@ -233,8 +233,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->salons->removeElement($salon)) {
             // set the owning side to null (unless already changed)
-            if ($salon->getPropriétaire() === $this) {
-                $salon->setPropriétaire(null);
+            if ($salon->getProprietaire() === $this) {
+                $salon->setProprietaire(null);
             }
         }
 
