@@ -57,7 +57,7 @@ class Salon
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Image = null;
 
-    #[ORM\OneToOne(mappedBy: 'salon', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'salon', cascade: ['persist', 'remove'])]
     private ?Reservation $reservation = null;
     
 

@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -46,7 +47,18 @@ class ReservationType extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank(),
                 ]
-                ]);
+                ])
+            ->add('preference', ChoiceType::class, [
+                'choices' => [
+                    'Sur place' => 'Sur place',
+                    'Par téléphone' => 'Par téléphone',
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'constraints' => [
+                    new Assert\NotBlank(),
+                ]
+            ]);
         
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $reservation = $event->getData();

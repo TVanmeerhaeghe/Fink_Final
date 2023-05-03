@@ -27,6 +27,9 @@
 			<li>
 				<a href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
 			</li>
+			<li>
+				<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir mes réservations</a>
+			</li>
 			{% if 'ROLE_ADMIN' in app.user.roles %}
 				<li>
 					<a href="{{ path('admin') }}">Administration</a>

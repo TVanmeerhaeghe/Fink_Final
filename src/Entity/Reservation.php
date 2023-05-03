@@ -14,11 +14,11 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'reservation', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'reservation', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToOne(inversedBy: 'reservation', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'reservation', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Salon $salon = null;
 
@@ -27,6 +27,9 @@ class Reservation
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $message = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $preference = null;
 
     public function getId(): ?int
     {
@@ -77,6 +80,18 @@ class Reservation
     public function setMessage(?string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getPreference(): ?string
+    {
+        return $this->preference;
+    }
+
+    public function setPreference(string $preference): self
+    {
+        $this->preference = $preference;
 
         return $this;
     }

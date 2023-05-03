@@ -62,7 +62,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'Proprietaire', targetEntity: Salon::class)]
     private Collection $salons;
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Reservation $reservation = null;
 
     public function __construct()

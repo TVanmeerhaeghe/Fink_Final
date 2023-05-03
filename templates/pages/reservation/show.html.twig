@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink - Vos réservations
+{% endblock %}
+
+{% block body %}
+	{% if not reservations.items is same as([]) %}
+		<h1>Vos réservations</h1>
+
+		<div>
+			{% for reservation in reservations %}
+				<div>
+					<h4>{{reservation.salon.nom}}</h4>
+					<p>{{reservation.date|date('d/m/Y')}}</p>
+					<p>{{reservation.message}}</p>
+					<p>{{reservation.preference}}</p>
+				{% endfor %}
+			</div>
+			<div>
+				{{ knp_pagination_render(reservations) }}
+			</div>
+		{% else %}
+			<h4>Vous n'avez aucune réservation actuellement</h4>
+		{% endif %}
+	{% endblock %}
