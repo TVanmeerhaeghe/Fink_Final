@@ -62,6 +62,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'Proprietaire', targetEntity: Salon::class)]
     private Collection $salons;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Reservation $reservation = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -237,6 +240,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $salon->setProprietaire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getReservation(): ?Reservation
+    {
+        return $this->reservation;
+    }
+
+    public function setReservation(Reservation $reservation): self
+    {
+        // set the owning side of the relation if necessary
+        if ($reservation->getUser() !== $this) {
+            $reservation->setUser($this);
+        }
+
+        $this->reservation = $reservation;
 
         return $this;
     }

@@ -21,8 +21,11 @@
 		<div>
 			<p>Propiétaire
 			</p>
-			<p>{{ salon.propriétaire.nom }}
-				{{ salon.propriétaire.prenom }}</p>
+			<p>{{ salon.proprietaire.nom }}
+				{{ salon.proprietaire.prenom }}</p>
+		</div>
+		<div>
+			<a href="{{ path('reservation.index',{id : salon.id})}}">Prendre rendez-vous pour discuter de votre projet</a>
 		</div>
 	</div>
 {% endblock %}

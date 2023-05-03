@@ -56,6 +56,9 @@ class Salon
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Image = null;
+
+    #[ORM\OneToOne(mappedBy: 'salon', cascade: ['persist', 'remove'])]
+    private ?Reservation $reservation = null;
     
 
     public function getId(): ?int
@@ -191,6 +194,23 @@ class Salon
     public function setImage(?string $Image): self
     {
         $this->Image = $Image;
+
+        return $this;
+    }
+
+    public function getReservation(): ?Reservation
+    {
+        return $this->reservation;
+    }
+
+    public function setReservation(Reservation $reservation): self
+    {
+        // set the owning side of the relation if necessary
+        if ($reservation->getSalon() !== $this) {
+            $reservation->setSalon($this);
+        }
+
+        $this->reservation = $reservation;
 
         return $this;
     }
