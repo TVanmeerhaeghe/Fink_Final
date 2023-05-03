@@ -29,4 +29,10 @@ class HomeController extends AbstractController
 
         return $this->render('pages/home/index.html.twig', ['form' => $form]);
     }
+
+    #[Route('/quiz', 'home.quiz', methods: ['GET'])]
+    public function quiz(): Response
+    {
+        return $this->render('pages/home/quiz.html.twig');
+    }
 }

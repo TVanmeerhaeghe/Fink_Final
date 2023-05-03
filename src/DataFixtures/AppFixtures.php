@@ -26,7 +26,8 @@ class AppFixtures extends Fixture
             $article = new Article();
             $article->setTitre($this->faker->sentence($nbWords = 5, $variableNbWords = true))
             ->setSujet($this->faker->sentence($nbWords = 5, $variableNbWords = true))
-            ->setContenu($this->faker->paragraph($nbSentences = 20));
+            ->setContenu($this->faker->paragraph($nbSentences = 20))
+            ->setImage('images/article/knucle-tattoos-man.jpg');
 
             $manager->persist($article);
         }
@@ -90,7 +91,8 @@ class AppFixtures extends Fixture
 
             // Choisir un propriétaire aléatoire parmi les utilisateurs filtrés
             $proprietaire = $usersWithRole[array_rand($usersWithRole)];
-            $salon->setPropriétaire($proprietaire);
+            $salon->setPropriétaire($proprietaire)
+            ->setImage('images/salon/tattoo-shop-sign.jpg');
         
             $manager->persist($salon);
         }

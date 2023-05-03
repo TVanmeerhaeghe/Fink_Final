@@ -7,10 +7,12 @@
 	{% if not salons.items is same as([]) %}
 		<h1>Les salons</h1>
 
+		{% include "components/_search_data.html.twig" with {form:form} %}
+
 		<div>
 			{% for salon in salons %}
 				<div>
-					{# <img src="#"> #}
+					<img src="{{asset(salon.image)}}">
 					<h4>{{salon.nom}}</h4>
 					<p>{{salon.ville}}</p>
 					<p>{{salon.style}}</p>

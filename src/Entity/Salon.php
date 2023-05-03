@@ -53,6 +53,9 @@ class Salon
 
     #[ORM\Column(length: 50)]
     private ?string $Style = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Image = null;
     
 
     public function getId(): ?int
@@ -176,6 +179,18 @@ class Salon
     public function setStyle(string $Style): self
     {
         $this->Style = $Style;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(?string $Image): self
+    {
+        $this->Image = $Image;
 
         return $this;
     }

@@ -72,7 +72,7 @@ class SalonRepository extends ServiceEntityRepository
         $data = $this->createQueryBuilder('s');
         if(!empty($searchData->q)) {
             $data = $data
-                ->where('s.Ville LIKE :q OR s.Style like :q' )
+                ->where('SOUNDEX(s.Ville) = SOUNDEX(:q) OR SOUNDEX(s.Style) = SOUNDEX(:q)')
                 ->setParameter('q', "%{$searchData->q}%");
         }
 

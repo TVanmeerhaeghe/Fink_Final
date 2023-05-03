@@ -10,7 +10,7 @@
 		<div>
 			{% for salonSearch in salonsSearch %}
 				<div>
-					{# <img src="#"> #}
+					<img src="{{asset(salon.image)}}">
 					<h4>{{salonSearch.nom}}</h4>
 					<p>{{salonSearch.ville}}</p>
 					<p>{{salonSearch.style}}</p>
