@@ -5,11 +5,11 @@ namespace App\Controller;
 use App\Entity\Salon;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
-use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ReservationRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,6 +64,20 @@ class ReservationController extends AbstractController
         return $this->render('pages/reservation/show_user.html.twig', ['reservations' => $reservations]);
     }
 
+    #[Route('/reservation/utilisateur/supression/{id}', name: 'reservation.delete', methods:['GET'])]
+    public function delete(EntityManagerInterface $manager, Reservation $reservation): Response
+    {
+        $manager->remove($reservation);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Votre réservation a été annulé avec succès !'
+        );
+
+        return $this->redirectToRoute('reservation.show.user');
+    }
+
     #[Route('/reservation/salon/{id}', name: 'reservation.show.salon')]
     public function showSalon(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {
@@ -81,5 +95,16 @@ class ReservationController extends AbstractController
         );
 
         return $this->render('pages/reservation/show_salon.html.twig', ['reservations' => $reservations]);
+    }
+
+    #[Route('/reservation/salon/confirmation/{id}', name: 'reservation.confirm.salon')]
+    public function confirm(Reservation $reservation, EntityManagerInterface $entityManager, Security $security)
+    {
+        $user = $security->getUser();
+
+        $reservation->setIsConfirmed(true);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('reservation.show.salon', ['id' => $user->getId()]);
     }
 }

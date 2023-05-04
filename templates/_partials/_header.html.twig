@@ -32,7 +32,7 @@
 			</li>
 			{% if 'ROLE_TATOUEUR' in app.user.roles %}
 				<li>
-					<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir les réservations pour mon salon</a>
+					<a href="{{ path('reservation.show.salon', {id : app.user.id}) }}">Voir les réservations pour mon salon</a>
 				</li>
 			{% endif %}
 			{% if 'ROLE_ADMIN' in app.user.roles %}

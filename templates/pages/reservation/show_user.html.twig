@@ -7,6 +7,12 @@
 	{% if not reservations.items is same as([]) %}
 		<h1>Vos réservations</h1>
 
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
+
 		<div>
 			{% for reservation in reservations %}
 				<div>
@@ -14,8 +20,16 @@
 					<p>{{reservation.date|date('d/m/Y')}}</p>
 					<p>{{reservation.message}}</p>
 					<p>{{reservation.preference}}</p>
-				{% endfor %}
-			</div>
+					{% if reservation.isConfirmed == false %}
+						<p>Votre réservation n'as pas  encore été confirmé par le salon</p>
+						<a href="{{path('reservation.delete',{id : reservation.id})}}">Annuler ma réservation</a>
+					{% else %}
+						<p>Confirmé par le salon</p>
+						<p>Si la confirmation à été confirmé par le salon, merci de le contacter directement si vous souhaitez l'annulé</p>
+					{% endif %}
+
+				</div>
+			{% endfor %}
 			<div>
 				{{ knp_pagination_render(reservations) }}
 			</div>

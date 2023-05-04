@@ -31,6 +31,9 @@ class Reservation
     #[ORM\Column(length: 100)]
     private ?string $preference = null;
 
+    #[ORM\Column]
+    private ?bool $isConfirmed = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +95,18 @@ class Reservation
     public function setPreference(string $preference): self
     {
         $this->preference = $preference;
+
+        return $this;
+    }
+
+    public function isIsConfirmed(): ?bool
+    {
+        return $this->isConfirmed;
+    }
+
+    public function setIsConfirmed(bool $isConfirmed): self
+    {
+        $this->isConfirmed = $isConfirmed;
 
         return $this;
     }
