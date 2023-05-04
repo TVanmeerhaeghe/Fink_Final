@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Salon;
 use App\Entity\Article;
+use App\Entity\Contact;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -30,8 +31,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Article', 'fas fa-list', Article::class);
-        yield MenuItem::linkToCrud('Salon', 'fas fa-list', Salon::class);
-        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Article', 'fa-regular fa-newspaper', Article::class);
+        yield MenuItem::linkToCrud('Salon', 'fa-solid fa-shop', Salon::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fa-solid fa-user', User::class);
+        yield MenuItem::linkToCrud('Demande de contact', 'fa-solid fa-envelope', Contact::class);
     }
 }
