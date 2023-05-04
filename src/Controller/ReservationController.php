@@ -52,7 +52,7 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/reservation/utilisateur/{id}', name: 'reservation.show.user')]
-    public function show(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
+    public function showUser(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {
         $reservations = $paginator->paginate(
 
@@ -61,6 +61,25 @@ class ReservationController extends AbstractController
             10
         );
 
-        return $this->render('pages/reservation/show.html.twig', ['reservations' => $reservations]);
+        return $this->render('pages/reservation/show_user.html.twig', ['reservations' => $reservations]);
+    }
+
+    #[Route('/reservation/salon/{id}', name: 'reservation.show.salon')]
+    public function showSalon(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
+    {
+        $queryBuilder = $repository->createQueryBuilder('r')
+        ->innerJoin('r.salon', 's')
+        ->where('s.Proprietaire = :user_id')
+        ->setParameter('user_id', $this->getUser())
+        ->orderBy('r.date', 'DESC');
+
+        $reservations = $paginator->paginate(
+
+            $queryBuilder,
+            $request->query->getInt('page', 1),
+            10
+        );
+
+        return $this->render('pages/reservation/show_salon.html.twig', ['reservations' => $reservations]);
     }
 }
