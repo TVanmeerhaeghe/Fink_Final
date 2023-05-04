@@ -37,6 +37,7 @@ class ReservationController extends AbstractController
             // // } else {
                 $reservation->setUser($this->getUser());
                 $reservation->setSalon($salon);
+                $reservation->setIsConfirmed(false);
                 $manager->persist($reservation);
                 $manager->flush();
 
@@ -44,6 +45,7 @@ class ReservationController extends AbstractController
                     'reservation',
                     'Votre reservation a bien étais envoyer !'
                 );
+
             // }
         }
         return $this->render('pages/reservation/index.html.twig', [

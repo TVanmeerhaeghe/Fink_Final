@@ -67,6 +67,8 @@ class AppFixtures extends Fixture
             ->setDescription($this->faker->paragraph($nbSentences = 20))
             ->setEmail($this->faker->email())
             ->setVille($this->faker->randomElement(['Lille', 'Marseille', 'Paris']))
+            ->setSiret($this->faker->numberBetween(100000000, 999999999))
+            ->setIsTrusted(true)
             ->setStyle($this->faker->randomElement([
                 'Old School',
                 'New School',

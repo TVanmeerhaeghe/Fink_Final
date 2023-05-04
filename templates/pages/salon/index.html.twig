@@ -11,13 +11,15 @@
 
 		<div>
 			{% for salon in salons %}
-				<div>
-					<img src="{{asset(salon.image)}}">
-					<h4>{{salon.nom}}</h4>
-					<p>{{salon.ville}}</p>
-					<p>{{salon.style}}</p>
-					<a href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
-				</div>
+				{% if salon.isTrusted == true %}
+					<div>
+						<img src="{{asset(salon.image)}}">
+						<h4>{{salon.nom}}</h4>
+						<p>{{salon.ville}}</p>
+						<p>{{salon.style}}</p>
+						<a href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
+					</div>
+				{% endif %}
 			{% endfor %}
 		</div>
 		<div>

@@ -59,6 +59,12 @@ class Salon
 
     #[ORM\ManyToOne(inversedBy: 'salon', cascade: ['persist', 'remove'])]
     private ?Reservation $reservation = null;
+
+    #[ORM\Column]
+    private ?int $Siret = null;
+
+    #[ORM\Column]
+    private ?bool $isTrusted = null;
     
 
     public function getId(): ?int
@@ -211,6 +217,30 @@ class Salon
         }
 
         $this->reservation = $reservation;
+
+        return $this;
+    }
+
+    public function getSiret(): ?int
+    {
+        return $this->Siret;
+    }
+
+    public function setSiret(int $Siret): self
+    {
+        $this->Siret = $Siret;
+
+        return $this;
+    }
+
+    public function isIsTrusted(): ?bool
+    {
+        return $this->isTrusted;
+    }
+
+    public function setIsTrusted(bool $isTrusted): self
+    {
+        $this->isTrusted = $isTrusted;
 
         return $this;
     }
