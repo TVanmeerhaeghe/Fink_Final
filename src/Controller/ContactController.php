@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Salon;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Entity\DemandeSalon;
@@ -51,6 +52,7 @@ class ContactController extends AbstractController
     public function demandeSalon(Request $request, EntityManagerInterface $manager): Response
     {
         $demande = new DemandeSalon();
+        $salon= new Salon();
 
         $form = $this->createForm(DemandeSalonType::class, $demande);
         $form->handleRequest($request);
@@ -58,7 +60,20 @@ class ContactController extends AbstractController
             $demande->setPropietaire($this->getUser());
             $demande = $form->getData();
 
+            $salon->setNom($demande->getNom());
+            $salon->setEmail($demande->getEmail());
+            $salon->setAdresse($demande->getAdresse());
+            $salon->setTelephone($demande->getTelephone());
+            $salon->setVille($demande->getVille());
+            $salon->setDescription($demande->getDescription());
+            $salon->setImage($demande->getImage());
+            $salon->setSiret($demande->getSiret());
+            $salon->setStyle($demande->getStyle());
+            $salon->setProprietaire($this->getUser());
+            $salon->setIsTrusted(false);
+
             $manager->persist($demande);
+            $manager->persist($salon);
             $manager->flush();
 
             $this->addFlash(
