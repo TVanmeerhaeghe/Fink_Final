@@ -2,8 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
-use App\Entity\Salon;
+use App\Entity\DemandeSalon;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -11,32 +10,32 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
-class SalonCrudController extends AbstractCrudController
+class DemandeSalonCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Salon::class;
+        return DemandeSalon::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
             //Definis le nom de l'entity quandi l y en a plusieurs
-            ->setEntityLabelInPlural('Les salons')
+            ->setEntityLabelInPlural('Les demandes de partenariats')
             //Pareil mais au singulier
-            ->setEntityLabelInSingular('Le salon')
-            ->setPageTitle("index", "Fink - Administration des salons")
-            ->setPaginatorPageSize(20)
-            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');       
+            ->setEntityLabelInSingular('La demande de partenariat')
+            ->setPageTitle("index", "Fink - Administration des demandes de partenariat")
+            ->setPaginatorPageSize(20);    
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
+            AssociationField::new('proprietaire_id')->autocomplete(),
             TextField::new('nom'),
             IntegerField::new('telephone'),
             TextField::new('Ville'),
@@ -48,7 +47,6 @@ class SalonCrudController extends AbstractCrudController
             ->setFormType(CKEditorType::class),
             TextField::new('style')->setFormTypeOption('disabled', 'disabled'),
             IntegerField::new('siret')->setFormTypeOption('disabled', 'disabled'),
-            BooleanField::new('is_trusted')
         ];
     }
 }

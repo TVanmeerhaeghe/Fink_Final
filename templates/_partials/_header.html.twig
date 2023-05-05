@@ -31,12 +31,20 @@
 			<li>
 				<a href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
 			</li>
-			<li>
-				<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir mes réservations</a>
-			</li>
 			{% if 'ROLE_TATOUEUR' in app.user.roles %}
 				<li>
-					<a href="{{ path('reservation.show.salon', {id : app.user.id}) }}">Voir les réservations pour mon salon</a>
+					<a href="{{ path('reservation.show.salon', {id : app.user.id}) }}">Voir les réservations pour mes salons</a>
+				</li>
+				<li>
+					<a href="{{ path('salon.list')}}">Voir mes salons</a>
+				</li>
+			{% endif %}
+			{% if 'ROLE_TATOUEUR' not in app.user.roles %}
+				<li>
+					<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir mes réservations</a>
+				</li>
+				<li>
+					<a href="{{ path('contact.partenariat')}}">Devenir partenaire</a>
 				</li>
 			{% endif %}
 			{% if 'ROLE_ADMIN' in app.user.roles %}

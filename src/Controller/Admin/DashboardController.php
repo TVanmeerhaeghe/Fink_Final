@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Salon;
 use App\Entity\Article;
 use App\Entity\Contact;
+use App\Entity\DemandeSalon;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -35,5 +36,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Salon', 'fa-solid fa-shop', Salon::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fa-solid fa-user', User::class);
         yield MenuItem::linkToCrud('Demande de contact', 'fa-solid fa-envelope', Contact::class);
+        yield MenuItem::linkToCrud('Demande de partenariat', 'fa-solid fa-handshake', DemandeSalon::class);
     }
 }

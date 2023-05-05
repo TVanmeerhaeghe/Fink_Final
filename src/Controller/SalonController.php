@@ -3,13 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Salon;
+use App\Form\SalonType;
 use App\Form\SearchType;
 use App\Model\SearchData;
 use App\Repository\SalonRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SalonController extends AbstractController
@@ -43,5 +47,43 @@ class SalonController extends AbstractController
     public function show(Salon $salon): Response
     {
         return $this->render('pages/salon/show.html.twig', ['salon' => $salon]);
+    }
+
+    #[IsGranted('ROLE_TATOUEUR')]
+    #[Route('/mes-salons', name: 'salon.list', methods:['GET'])]
+    //Fonction qui apelle toutes les recettes
+    public function showMine(SalonRepository $repository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $salons = $paginator->paginate(
+            $repository->findBy(['Proprietaire'=>$this->getUser()]),
+            $request->query->getInt('page', 1),
+            10
+        );
+
+        return $this->render('pages/salon/salon_owner.html.twig', ['salons' => $salons]);
+    }
+
+    #[Security("is_granted('ROLE_USER') and user === salon.getProprietaire()")]
+    #[Route('/salons/edition/{id}', name: 'salon.edit', methods:['GET', 'POST'])]
+    public function edit(Salon $salon, Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(SalonType::class, $salon);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $salon = $form->getData();
+
+            $manager->persist($salon);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre salon a été modifié avec succès !'
+            );
+
+            return $this->redirectToRoute('salon.list');
+        }
+
+        return $this->render('pages/salon/edit.html.twig', ['form' => $form->createView()]);
     }
 }

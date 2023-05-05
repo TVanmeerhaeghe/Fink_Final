@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fink - Mes salons
+{% endblock %}
+
+{% block body %}
+	{% if not salons.items is same as([]) %}
+		<h1>Mes salons</h1>
+
+		<div>
+			{% for salon in salons %}
+				<div>
+					<h4>{{salon.nom}}</h4>
+					<p>{{salon.ville}}</p>
+					<p>{{salon.style}}</p>
+					<a href="{{ path('salon.edit', {id : salon.id}) }}">Modifier ce salon</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div>
+			{{ knp_pagination_render(salons) }}
+		</div>
+	{% else %}
+		<h4>Vous ne possédez actuellement aucun salon enregistré chez nous</h4>
+		<a href="{{ path('contact.partenariat')}}">Devenir partenaire ?</a>
+	{% endif %}
+{% endblock %}
