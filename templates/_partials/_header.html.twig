@@ -1,25 +1,29 @@
-<div style="background-color:black;height:100px;">
-	<nav>
-		<li>
-			<a href="{{ path('home.index') }}">Accueil
-			</a>
-		</li>
-		<li>
-			<a href="{{ path('blog.index') }}">Blog
-			</a>
-		</li>
-		<li>
-			<a href="{{ path('salon.index') }}">Nos salons
-			</a>
-		</li>
-		<li>
-			<a href="{{ path('home.quiz') }}">Découvrir votre style de tatouage
-			</a>
-		</li>
-		<li>
-			<a href="{{ path('contact.index') }}">Contact
-			</a>
-		</li>
+	<nav class="container-menu-nav">
+		<ul>
+			<li>
+				<a href="{{ path('home.index') }}" class="branding"><img src="/images/global/logo.png" alt="">FINK</a>
+			</li>
+			<li>
+				<a href="{{ path('home.index') }}">Accueil
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('blog.index') }}">Blog
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('salon.index') }}">Nos salons
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('home.quiz') }}">Découvrir votre style de tatouage
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('contact.index') }}">Contact
+				</a>
+			</li>
+		</ul>
 	</nav>
 </div>
 <div>

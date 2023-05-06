@@ -27,11 +27,9 @@ h3 {
   font-size: var(--font-title);
   margin-bottom: 50px;
 }
-
-section {
+.mt-100{
   margin-top: 100px;
 }
-
 .button {
   display: inline-block;
   padding: 10px 20px;
@@ -54,6 +52,88 @@ section {
 .box {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
+/* MENU-NAV */
+.container-menu-nav{
+  position: fixed;
+  max-height: 90px;
+  min-width: 100%;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+}
+.container-menu-nav ul{
+  display: inline-flex;
+  height: fit-content;
+}
+.container-menu-nav ul li{
+  padding-left: 10px;
+  list-style: none;
+}
+.container-menu-nav ul li a{
+  text-decoration: none;
+  color: #ddd;
+}
+.container-menu-nav ul li .branding{
+  font-size: 3rem;
+  flex-direction: row
+}
+.container-menu-nav ul li a img{
+  max-height: 20%;
+  max-width: auto;
+  vertical-align: middle
+}
+
+/* FIN-MENU-NAV */
+/* HOME */
+.container-home{
+  width: 100%;
+  padding: 0;
+}
+.container-home .header-wrapper{
+  background-image:url("/images/global/wrap-header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 70vh;
+  width: 100%;
+
+}
+.container-home .header-wrapper h1{
+  padding-top: 75px;
+  text-align: left;
+  font-size: 3.8rem;
+  color: rgb(2, 255, 2);
+}
+/* FIN-HOME */
+/* FOOTER */
+footer {
+  padding: 0;
+  margin: 0;
+  position: sticky;
+  width: 100%;
+  height: auto;
+}
+footer .container-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgb(0, 0, 0);
+  padding: 2rem;
+}
+footer .container-footer .col{
+  list-style: none;
+}
+footer .container-footer .col .titre-col-footer {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+footer .container-footer .col li {
+  padding: 1.1rem;
+  color: #ddd;
+}
+footer > span {
+  text-align: center;
+  width: 100%;
+  background-color: black;
+}
+/* FIN-FOOTER */
 
 .how-to-home {
   display: flex;
