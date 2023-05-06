@@ -1,0 +1,28 @@
+<nav>
+	{% if app.user %}
+		<li>
+			<a href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
+		</li>
+		<li>
+			<a href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+		</li>
+		<li>
+			<a href="{{ path('reservation.show.salon', {id : app.user.id}) }}">Voir les réservations pour mes salons</a>
+		</li>
+		<li>
+			<a href="{{ path('salon.list')}}">Voir mes salons</a>
+		</li>
+		<li>
+			<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir mes réservations</a>
+		</li>
+		<li>
+			<a href="{{ path('contact.partenariat')}}">Devenir partenaire</a>
+		</li>
+		<li>
+			<a href="{{ path('admin') }}">Administration</a>
+		</li>
+		<li>
+			<a href="{{ path('security.logout') }}">Déconnexion</a>
+		</li>
+	{% endif %}
+</nav>

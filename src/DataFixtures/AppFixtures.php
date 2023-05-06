@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
             ->setNom('admin')
             ->setPrenom('admin')
             ->setEmail('admin@fink.fr')
-            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
+            ->setRoles(['ROLE_USER', 'ROLE_ADMIN', 'ROLE_TATOUEUR'])
             ->setPlainPassword('password');
 
         $users[] = $admin;

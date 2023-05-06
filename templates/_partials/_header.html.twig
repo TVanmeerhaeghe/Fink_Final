@@ -1,7 +1,7 @@
 <div style="background-color:black;height:100px;">
 	<nav>
 		<li>
-			<a href="{{ path('home.index') }}">Acceuil
+			<a href="{{ path('home.index') }}">Accueil
 			</a>
 		</li>
 		<li>
@@ -23,38 +23,37 @@
 	</nav>
 </div>
 <div>
-	<nav>
-		{% if app.user %}
-			<li>
-				<a href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
-			</li>
-			<li>
-				<a href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
-			</li>
-			{% if 'ROLE_TATOUEUR' in app.user.roles %}
+	{% if app.user %}
+		{% if 'ROLE_ADMIN' in app.user.roles %}
+			{% include "components/_nav_admin.html.twig" %}
+		{% else %}
+			<nav>
 				<li>
-					<a href="{{ path('reservation.show.salon', {id : app.user.id}) }}">Voir les réservations pour mes salons</a>
+					<a href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
 				</li>
 				<li>
-					<a href="{{ path('salon.list')}}">Voir mes salons</a>
+					<a href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+				</li>
+				{% if 'ROLE_TATOUEUR' in app.user.roles %}
+					<li>
+						<a href="{{ path('reservation.show.salon', {id : app.user.id}) }}">Voir les réservations pour mes salons</a>
+					</li>
+					<li>
+						<a href="{{ path('salon.list')}}">Voir mes salons</a>
+					</li>
+				{% endif %}
+				{% if 'ROLE_TATOUEUR' not in app.user.roles %}
+					<li>
+						<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir mes réservations</a>
+					</li>
+					<li>
+						<a href="{{ path('contact.partenariat')}}">Devenir partenaire</a>
+					</li>
+				{% endif %}
+				<li>
+					<a href="{{ path('security.logout') }}">Déconnexion</a>
 				</li>
 			{% endif %}
-			{% if 'ROLE_TATOUEUR' not in app.user.roles %}
-				<li>
-					<a href="{{ path('reservation.show.user', {id : app.user.id}) }}">Voir mes réservations</a>
-				</li>
-				<li>
-					<a href="{{ path('contact.partenariat')}}">Devenir partenaire</a>
-				</li>
-			{% endif %}
-			{% if 'ROLE_ADMIN' in app.user.roles %}
-				<li>
-					<a href="{{ path('admin') }}">Administration</a>
-				</li>
-			{% endif %}
-			<li>
-				<a href="{{ path('security.logout') }}">Déconnexion</a>
-			</li>
 		{% else %}
 			<li>
 				<a href="{{ path('security.login') }}">Connexion
@@ -64,6 +63,6 @@
 				<a href="{{ path('security.registration') }}">Inscription
 				</a>
 			</li>
-		{% endif %}
-	</nav>
+		</nav>
+	{% endif %}
 </div>

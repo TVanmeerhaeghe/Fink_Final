@@ -4,8 +4,45 @@
 {% endblock %}
 
 {% block body %}
-	<div class="example-wrapper">
-		<h1>FINK</h1>
-		{% include "components/_search_data.html.twig" with {form:form} %}
-	</div>
-{% endblock %}
+	<div class="home">
+		<section class="hero-banner">
+			<div class="example-wrapper">
+				<h1>FINK</h1>
+				{% include "components/_search_data.html.twig" with {form:form} %}
+			</div>
+		</section>
+		<section class="how-to-home">
+
+			<div class="how-to-box">
+				<div class="how-to-text">
+					<h3>Comment ça<br>
+						fonctionne Fink ?</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra sapien quis mauris tincidunt, vel bibendum lorem mollis.<br>
+						Aliquam vel aliquet velit, eget convallis magna. Maecenas vel massa nec magna semper pretium.<br>
+						Donec rutrum arcu felis, vel consequat libero luctus in. Suspendisse vitae mi sed elit facilisis lobortis vel vel augue.
+						<br>Nullam aliquet, quam ut malesuada fermentum, eros turpis placerat mi, sed tristique est arcu vitae est. Aenean vitae sapien vel tellus ultrices molestie.<br>
+						Sed iaculis velit vel blandit interdum.</p>
+					<a href="" class="button">Découvrez-nous !</a>
+				</div>
+				<div class="how-to-img">
+					<img src="images/global/how-to-img.jpg" alt="Tatouage dos ange">
+				</div>
+				<div></section>
+				<section class="last-salon">
+					<h3>Nos derniers tatoueurs</h3>
+					<div class="last-salon-flex">
+						{% for salon in salons %}
+							{% if salon.isTrusted == true %}
+								<div class="last-salon-item box">
+									<img src="{{asset(salon.image)}}">
+									<h4>{{salon.nom}}</h4>
+									<p>{{salon.ville}}</p>
+									<p>{{salon.style}}</p>
+									<p>{{salon.description|slice(0, 100) ~ '...' }}</p>
+									<a class="button" href="{{ path('salon.show', {id: salon.id}) }}">Le découvrir</a>
+								</div>
+							{% endif %}
+						{% endfor %}
+						<div></section>
+						<div>
+						{% endblock %}
