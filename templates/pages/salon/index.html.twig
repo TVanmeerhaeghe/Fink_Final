@@ -5,23 +5,24 @@
 
 {% block body %}
 	{% if not salons.items is same as([]) %}
-		<h1>Les salons</h1>
-
-		{% include "components/_search_data.html.twig" with {form:form} %}
-
-		<div>
-			{% for salon in salons %}
-				{% if salon.isTrusted == true %}
-					<div>
-						<img src="{{asset(salon.image)}}">
-						<h4>{{salon.nom}}</h4>
-						<p>{{salon.ville}}</p>
-						<p>{{salon.style}}</p>
-						<a href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
-					</div>
-				{% endif %}
-			{% endfor %}
+		<div class="search-salon">
+			<h2>Rechercher un salon</h2>
+			{% include "components/_search_data.html.twig" with {form:form} %}
 		</div>
+		<section class="last-salon m-0">
+			<div class="last-salon-flex list-salon">
+				{% for salon in salons %}
+					{% if salon.isTrusted == true %}
+						<div class="last-salon-item box">
+							<img src="{{asset(salon.image)}}">
+							<h4>{{salon.nom}}</h4>
+							<p>{{salon.ville}}</p>
+							<p>{{salon.style}}</p>
+							<a class="button" href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
 		<div>
 			{{ knp_pagination_render(salons) }}
 		</div>

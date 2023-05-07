@@ -18,7 +18,7 @@ class SearchType extends AbstractType
         $builder
             ->add('q', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type w-300',
                     'minlength' => '2',
                     'maxlength' => '50',
                     'placeholder' => 'Rechercher via un mot clé (Style ou Ville)'

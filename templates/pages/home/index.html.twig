@@ -6,7 +6,7 @@
 {% block body %}
 	<div class="container-home">
 		<section class="header-wrapper">
-			<h1>Trouve le tatoueur de tes reves en 3 clics :</h1>
+			<h1>Trouve le tatoueur<br> de tes reves en 3 clics :</h1>
 			<div class="example-wrapper">
 				{% include "components/_search_data.html.twig" with {form:form} %}
 			</div>
@@ -28,7 +28,7 @@
 					<img src="images/global/how-to-img.jpg" alt="Tatouage dos ange">
 				</div>
 				<div></section>
-				<section class="last-salon mt-100">
+				<section class="last-salon mt-100 mb-100">
 					<h3>Nos derniers tatoueurs</h3>
 					<div class="last-salon-flex">
 						{% for salon in salons %}

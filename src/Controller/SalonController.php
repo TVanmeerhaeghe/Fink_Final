@@ -37,7 +37,7 @@ class SalonController extends AbstractController
 
             $repository->findAll(),
             $request->query->getInt('page', 1),
-            10
+            9
         );
 
         return $this->render('pages/salon/index.html.twig', ['salons' => $salons, 'form' => $form]);
@@ -57,7 +57,7 @@ class SalonController extends AbstractController
         $salons = $paginator->paginate(
             $repository->findBy(['Proprietaire'=>$this->getUser()]),
             $request->query->getInt('page', 1),
-            10
+            9
         );
 
         return $this->render('pages/salon/salon_owner.html.twig', ['salons' => $salons]);

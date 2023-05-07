@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div>
-		<h1>Formulaire de connnexion</h1>
+	<div class="container-form box">
+		
 
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success mt-4">
@@ -21,18 +21,17 @@
 		{% endif %}
 
 		<form action="{{ path('security.login') }}" method="post" name="login">
+			<h1>Formulaire de connnexion</h1>
+			
 			<div>
-				<label for="username">Adresse email</label>
-				<input type="email" id="username" name="_username" placeholder="exemple@fink.fr" value="{{ last_username }}">
+				{# <label for="username">Adresse email</label> #}
+				<input class="input-type" type="email" id="username" name="_username" placeholder="exemple@fink.fr" value="{{ last_username }}">
 			</div>
-			<div class="form-group">
-				<label for="password">Mot de passe</label>
-				<input type="password" id="password" name="_password" placeholder="********">
+			<div>
+				{# <label for="password">Mot de passe</label> #}
+				<input class="input-type" type="password" id="password" name="_password" placeholder="********">
 			</div>
-
-			<button type="submit">
-				Se connecter
-			</button>
+			<button class="button" type="submit">Se connecter</button>
 		</form>
 	</div>
 {% endblock %}

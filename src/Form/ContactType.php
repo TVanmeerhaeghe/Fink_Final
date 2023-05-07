@@ -19,7 +19,7 @@ class ContactType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
@@ -34,7 +34,7 @@ class ContactType extends AbstractType
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
@@ -49,7 +49,7 @@ class ContactType extends AbstractType
             ])
             ->add('email', EmailType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -64,7 +64,7 @@ class ContactType extends AbstractType
             ])
             ->add('Sujet', TextType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
@@ -79,7 +79,7 @@ class ContactType extends AbstractType
             ])
             ->add('Message', TextareaType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type input-msg',
                     'min' => 1,
                     'max' => 5,
                 ],
@@ -93,7 +93,7 @@ class ContactType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'button',
                 ],
                 'label' => 'Envoyer'
             ])

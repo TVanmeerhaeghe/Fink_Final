@@ -21,11 +21,11 @@ class RegistrationType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
-                'label' => 'Nom',
+                'label' => 'Nom :',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -36,11 +36,11 @@ class RegistrationType extends AbstractType
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
-                'label' => 'Prenom',
+                'label' => 'Prenom :',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -51,11 +51,11 @@ class RegistrationType extends AbstractType
             ])
             ->add('email', EmailType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
-                'label' => 'Email',
+                'label' => 'Email :',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -66,12 +66,12 @@ class RegistrationType extends AbstractType
             ])
             ->add('telephone', IntegerType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'min' => 1,
                     'max' => 999999999,
                 ],
                 'required' => false,
-                'label' => 'Téléphone',
+                'label' => 'Téléphone :',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -82,28 +82,28 @@ class RegistrationType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
-                    'label' => 'Mot de passe',
+                    'label' => 'Mot de passe :',
                     'label_attr' => [
                         'class' => ''
                     ],
                     'attr' => [
-                        'class' => '',
+                        'class' => 'input-type',
                     ],
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du Mot de passe',
+                    'label' => 'Confirmation du Mot de passe :',
                     'label_attr' => [
                         'class' => ''
                     ],
                     'attr' => [
-                        'class' => '',
+                        'class' => 'input-type',
                     ],
                 ],
                 'invalid_message' => 'Les mots de passes ne corresponde pas'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'button',
                 ],
                 'label' => 'Créer mon compte'
             ])

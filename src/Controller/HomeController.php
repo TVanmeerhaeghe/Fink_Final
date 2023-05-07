@@ -47,4 +47,10 @@ class HomeController extends AbstractController
     {
         return $this->render('pages/home/quiz.html.twig');
     }
+
+    #[Route('/qui-sommes-nous', 'home.qsn', methods: ['GET'])]
+    public function decouvrir(): Response
+    {
+        return $this->render('pages/home/qsn.html.twig');
+    }
 }

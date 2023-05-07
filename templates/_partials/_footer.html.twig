@@ -1,25 +1,56 @@
-    <footer>
-      <div class="container-footer">
-        <img src="/images/global/logo.png" alt="" class="logo-footer" />
-        <ul class="col">
-          <li class="titre-col-footer">Fink</li>
-          <li>Comment ça fonctionne Fink</li>
-          <li>Notre quizz en ligne</li>
-          <li>Nos derniers tatoueurs</li>
-          <li>Nos tatoueurs ont du talent</li>
-        </ul>
-        <ul class="col">
-          <li class="titre-col-footer">Aide</li>
-          <li>S'inscrire</li>
-          <li>Avis</li>
-          <li>À propos</li>
-          <li>Contact</li>
-        </ul>
-        <ul class="col">
-          <li class="titre-col-footer">Juridique</li>
-          <li>Termes et conditions</li>
-          <li>Politique de cnfidentialité</li>
-        </ul>
-      </div>
-      <span><p>&copy;Fink_2023</p></span>
-    </footer>
+<footer>
+	<div class="container-footer">
+		<img src="/images/global/logo.png" alt="" class="logo-footer"/>
+		<ul class="col">
+			<li class="titre-col-footer">Fink</li>
+			<li><a href="#">Comment ça fonctionne Fink</a></li>
+			<li>
+				<a href="{{ path('home.quiz') }}">Notre quizz en ligne</a>
+			</li>
+			<li>
+				<a href="{{ path('salon.index') }}">Nos salons partenaires</a>
+			</li>
+			<li>
+				<a href="#">Nos tatoueurs ont du talent</a>
+			</li>
+		</ul>
+		<ul class="col">
+			<li class="titre-col-footer">Aide</li>
+			{% if app.user %}
+				<li>
+					<a href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
+				</li>
+				<li>
+					<a href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{ path('security.registration') }}">S'inscrire</a>
+				</li>
+				<li>
+					<a href="{{ path('security.login') }}">Connexion
+					</a>
+				</li>
+			{% endif %}
+			<li><a href="#">Avis</a></li>
+			<li>
+				<a href="{{ path('home.qsn') }}">Qui sommes-nous ?</a>
+			</li>
+			<li>
+				<a href="{{ path('contact.index') }}">Contact</a>
+			</li>
+		</ul>
+		<ul class="col">
+			<li class="titre-col-footer">Juridique</li>
+			<li>
+				<a href="#">Termes et conditions</a>
+			</li>
+			<li>
+				<a href="#">Politique de cnfidentialité</a>
+			</li>
+		</ul>
+	</div>
+	<span>
+		<p>&copy;Fink_2023</p>
+	</span>
+</footer>
