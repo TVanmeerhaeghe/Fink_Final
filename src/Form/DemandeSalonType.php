@@ -20,7 +20,7 @@ class DemandeSalonType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
@@ -35,7 +35,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('Adresse', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
@@ -50,7 +50,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('Ville', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
@@ -65,7 +65,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('telephone', IntegerType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'min' => 1,
                     'max' => 999999999,
                 ],
@@ -80,7 +80,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('Siret', IntegerType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'min' => 1,
                     'max' => 999999999,
                 ],
@@ -95,7 +95,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('Description', TextareaType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type input-msg',
                 ],
                 'label' => 'Une description rapide du salon',
                 'label_attr' => [
@@ -107,7 +107,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('email', EmailType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -149,6 +149,9 @@ class DemandeSalonType extends AbstractType
                     'Fantaisie' => 'Fantaisie',
                     'Abstrait' => 'Abstrait'
                 ],
+                'attr' => [
+                    'class' => 'input-type',
+                ],
                 'label' => 'Quels style  de tatouage pratiqué vous principalement ?',
                 'label_attr' => [
                     'class' => ''
@@ -159,7 +162,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('Image', TextType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -173,7 +176,7 @@ class DemandeSalonType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'button',
                 ],
                 'label' => 'Envoyer ma demande'
             ])

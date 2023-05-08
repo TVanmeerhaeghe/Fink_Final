@@ -5,23 +5,29 @@
 
 {% block body %}
 	{% if not salonsSearch.items is same as([]) %}
-		<h1>Votre Recherche</h1>
+		<div class="title-page">
+			<h1 class="title">Votre Recherche</h1>
+		</div>
 
-		<div>
+		<section class="last-salon">
+			<div class="last-salon-flex list-salon">
 			{% for salonSearch in salonsSearch %}
-				<div>
+				{% if salonSearch.isTrusted == true %}
+				<div class="last-salon-item box">
 					<img src="{{asset(salonSearch.image)}}">
 					<h4>{{salonSearch.nom}}</h4>
 					<p>{{salonSearch.ville}}</p>
 					<p>{{salonSearch.style}}</p>
-					<a href="{{ path('salon.show', {id: salonSearch.id}) }}">Voir plus</a>
+					<a class="button" href="{{ path('salon.show', {id: salonSearch.id}) }}">Voir plus</a>
 				</div>
+				{% endif %}
 			{% endfor %}
-		</div>
-		<div>
-			{{ knp_pagination_render(salonsSearch) }}
-		</div>
+			</div>
+		</section>
 	{% else %}
-		<h4>Aucun salon ne correspond a votre recherche</h4>
+		<section class="salon-not-found box">
+			<h4>Nous ne disposons pas de salon affilier dans cette ville.</h4>
+			<a class="button" href="">Rechercher dans une autre ville ?</a>
+		</section>
 	{% endif %}
 {% endblock %}

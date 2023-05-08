@@ -5,11 +5,14 @@
 
 {% block body %}
 	{% if not salons.items is same as([]) %}
-		<div class="search-salon">
-			<h2>Rechercher un salon</h2>
-			{% include "components/_search_data.html.twig" with {form:form} %}
-		</div>
-		<section class="last-salon m-0">
+	<div class="container-home">
+		<section class="header-wrapper salon-wrapper">
+			<h1>Rechercher un<br>tatoueur</h1>
+			<div>
+				{% include "components/_search_data.html.twig" with {form:form} %}
+			</div>
+		</section>
+		<section class="last-salon">
 			<div class="last-salon-flex list-salon">
 				{% for salon in salons %}
 					{% if salon.isTrusted == true %}
@@ -23,10 +26,12 @@
 					{% endif %}
 				{% endfor %}
 			</div>
+		</section>
 		<div>
 			{{ knp_pagination_render(salons) }}
 		</div>
 	{% else %}
 		<h4>Il n'y a pas de salon actuellement</h4>
 	{% endif %}
+	</div>
 {% endblock %}

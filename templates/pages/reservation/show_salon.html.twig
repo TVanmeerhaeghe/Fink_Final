@@ -5,22 +5,36 @@
 
 {% block body %}
 	{% if not reservations.items is same as([]) %}
-		<h1>Les réservations pour mon(mes) salon(s)</h1>
+	<div class="title-page">
+		<h1 class="title">Les réservations pour mon(mes) salon(s)</h1>
+	</div>
 
-		<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Salon</th>
+					<th>Date</th>
+					<th>Pourquoi ?</th>
+					<th>Préférence</th>
+					<th>Confirmé le rendez-vous ?</th>
+				</tr>
+			</thead>
+			<tbody>
 			{% for reservation in reservations %}
-				<div>
-					<h4>{{reservation.salon.nom}}</h4>
-					<p>{{reservation.date|date('d/m/Y')}}</p>
-					<p>{{reservation.message}}</p>
-					<p>{{reservation.preference}}</p>
+				<tr>
+					<td>{{reservation.salon.nom}}</td>
+					<td>{{reservation.date|date('d/m/Y')}}</td>
+					<td>{{reservation.message}}</td>
+					<td>{{reservation.preference}}</td>
 					{% if reservation.isConfirmed == false %}
-						<a href="{{path('reservation.confirm.salon',{id : reservation.id})}}">Confirmé ?</a>
+						<td><a class="button" href="{{path('reservation.confirm.salon',{id : reservation.id})}}">Confirmé ?</a></td>
 					{% else %}
-						<p>Confirmé</p>
+						<td>Confirmé</td>
 					{% endif %}
-				{% endfor %}
-			</div>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
 			<div>
 				{{ knp_pagination_render(reservations) }}
 			</div>

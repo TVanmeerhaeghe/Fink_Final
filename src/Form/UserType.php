@@ -21,7 +21,7 @@ class UserType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
@@ -36,7 +36,7 @@ class UserType extends AbstractType
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
@@ -51,7 +51,7 @@ class UserType extends AbstractType
             ])
             ->add('email', EmailType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -66,7 +66,7 @@ class UserType extends AbstractType
             ])
             ->add('telephone', IntegerType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'min' => 1,
                     'max' => 999999999,
                 ],
@@ -87,7 +87,7 @@ class UserType extends AbstractType
                         'class' => ''
                     ],
                     'attr' => [
-                        'class' => '',
+                        'class' => 'input-type',
                     ],
                 ],
                 'second_options' => [
@@ -96,14 +96,14 @@ class UserType extends AbstractType
                         'class' => ''
                     ],
                     'attr' => [
-                        'class' => '',
+                        'class' => 'input-type',
                     ],
                 ],
                 'invalid_message' => 'Les mots de passes ne corresponde pas'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'button',
                 ],
                 'label' => 'Modifier mon profil'
             ])

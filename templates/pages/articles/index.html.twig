@@ -5,18 +5,20 @@
 
 {% block body %}
 	{% if not articles.items is same as([]) %}
-		<h1>Nos articles</h1>
-		<div>
-			<h4>
-				Il y a
-				{{ articles.getTotalItemCount }}
-				articles au total
-			</h4>
+		<div class="title-page">
+				<h1>Nos articles</h1>
+			<div>
+				<h4>
+					Découvrez nos
+					{{ articles.getTotalItemCount }}
+					articles
+				</h4>
+			</div>
 		</div>
-
-		<div>
+	
+		<div class="container-blog">
 			{% for article in articles %}
-				<div>
+				<div class="articles box">
 					<img src="{{asset(article.image)}}">
 					<h4>{{article.titre}}</h4>
 					<p>{{article.sujet}}</p>
@@ -24,7 +26,8 @@
 						<p>{{article.contenu|slice(0, 50) ~ '...' }}</p>
 					</div>
 					<small>{{article.date|date('d/m/Y')}}</small>
-					<a href="{{ path('blog.show', {id: article.id}) }}">Voir plus</a>
+					<br>
+					<a class="button" href="{{ path('blog.show', {id: article.id}) }}">Voir plus</a>
 				</div>
 			{% endfor %}
 		</div>

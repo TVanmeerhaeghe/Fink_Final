@@ -23,7 +23,7 @@ class UserPasswordType extends AbstractType
                     'class' => ''
                 ],
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                 ],
             ],
             'second_options' => [
@@ -32,14 +32,14 @@ class UserPasswordType extends AbstractType
                     'class' => ''
                 ],
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                 ],
             ],
             'invalid_message' => 'Les mots de passes ne correspondent pas'
             ])
             ->add('newPassword', PasswordType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                 ],
                 'label' => 'Nouveau Mot de passe',
                 'label_attr' => [
@@ -51,7 +51,7 @@ class UserPasswordType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'button',
                 ],
                 'label' => 'Changer mon mot de passe'
             ])

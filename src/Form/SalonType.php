@@ -21,7 +21,7 @@ class SalonType extends AbstractType
         $builder
             ->add('Nom', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
@@ -36,7 +36,7 @@ class SalonType extends AbstractType
             ])
             ->add('Adresse', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
@@ -51,7 +51,7 @@ class SalonType extends AbstractType
             ])
             ->add('Telephone', IntegerType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'min' => 1,
                     'max' => 999999999,
                 ],
@@ -66,7 +66,7 @@ class SalonType extends AbstractType
             ])
             ->add('Description', TextareaType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type input-msg',
                 ],
                 'label' => 'Une description rapide du salon',
                 'label_attr' => [
@@ -78,7 +78,7 @@ class SalonType extends AbstractType
             ])
             ->add('Ville', TextType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
@@ -93,7 +93,7 @@ class SalonType extends AbstractType
             ])
             ->add('Email', EmailType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -135,6 +135,9 @@ class SalonType extends AbstractType
                     'Fantaisie' => 'Fantaisie',
                     'Abstrait' => 'Abstrait'
                 ],
+                'attr' => [
+                    'class' => 'input-type',
+                ],
                 'label' => 'Quels style  de tatouage pratiqué vous principalement ?',
                 'label_attr' => [
                     'class' => ''
@@ -145,7 +148,7 @@ class SalonType extends AbstractType
             ])
             ->add('Image', TextType:: class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -159,7 +162,7 @@ class SalonType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'button',
                 ],
                 'label' => 'Modifier'
             ])

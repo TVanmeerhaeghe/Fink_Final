@@ -5,13 +5,15 @@
 {% endblock %}
 
 {% block body %}
-	<div>
+	<div class="article">
 		<img src="{{asset(article.image)}}">
-		<h4>{{article.titre}}</h4>
-		<p>{{article.sujet}}</p>
-		<div>
-			<p>{{article.contenu}}</p>
+		<div class="article-contenu box">
+			<h4>{{article.titre}}</h4>
+			<p class="sujet-article">{{article.sujet}}</p>
+			<div>
+				<p class="contenu-article">{{article.contenu}}</p>
+			</div>
+			<small>{{article.date|date('d/m/Y')}}</small>
 		</div>
-		<small>{{article.date|date('d/m/Y')}}</small>
 	</div>
 {% endblock %}

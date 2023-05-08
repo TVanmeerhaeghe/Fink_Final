@@ -5,27 +5,21 @@
 {% endblock %}
 
 {% block body %}
-	<div>
-		<div>
-			<img src="{{asset(salon.image)}}">
-			<h4>{{salon.nom}}</h4>
-			<p>{{salon.ville}}</p>
-			<p>{{salon.style}}</p>
-			<p>{{salon.adresse}}</p>
-			<p>{{salon.telephone}}</p>
-			<p>{{salon.email}}</p>
-		</div>
-		<div>
+		<img class="img-salon" src="{{asset(salon.image)}}">
+	<div class="salon">
+			<div class="salon-contenu box">
+				<h4>{{salon.nom}}</h4>
+				<p>{{salon.ville}}</p>
+				<p>{{salon.style}}</p>
+				<p>{{salon.adresse}}</p>
+				<p>{{salon.telephone}}</p>
+				<p>{{salon.email}}</p>
+			</div>
+		<div class="sujet-salon box">
 			<p>{{salon.description}}</p>
-		</div>
-		<div>
-			<p>Propiétaire
-			</p>
-			<p>{{ salon.proprietaire.nom }}
-				{{ salon.proprietaire.prenom }}</p>
-		</div>
-		<div>
-			<a href="{{ path('reservation.index',{id : salon.id})}}">Prendre rendez-vous pour discuter de votre projet</a>
+			<p>Propiétaire : {{ salon.proprietaire.nom }} {{ salon.proprietaire.prenom }}</p>
+
+			<a class="button" href="{{ path('reservation.index',{id : salon.id})}}">Prendre rendez-vous pour discuter de votre projet</a>
 		</div>
 	</div>
 {% endblock %}

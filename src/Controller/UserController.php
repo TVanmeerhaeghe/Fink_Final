@@ -33,14 +33,12 @@ class UserController extends AbstractController
                     'Votre profil à bien été modifié !'
                 );
     
-                return $this->redirectToRoute('home.index');
             } else {
                 $this->addFlash(
                     'warning',
                     'Le mot de passe renseigné est incorrect'
                 );
             }
-
         }
 
         return $this->render('pages/user/edit.html.twig', [
@@ -69,8 +67,7 @@ class UserController extends AbstractController
                     'success',
                     'Votre mot de passe à été modifié avec succés'
                 );
-    
-                return $this->redirectToRoute('home.index');
+                
             } else {
                 $this->addFlash(
                     'warning',

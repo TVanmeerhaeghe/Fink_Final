@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,15 +30,23 @@ class ReservationType extends AbstractType
     {
         $salon = $options['salon'];
         $builder
-            ->add('date')
+            ->add('date', DateType::class, [             
+            'attr' => [
+                'class' => 'input-type select-date',
+            ],
+            'format' => 'dd/MM/yyyy',
+            ])
             ->add('salon', EntityType::class, [
                 'class' => Salon::class,
                 'choices' => [$salon],
                 'choice_label' => 'nom', 
+                'attr' => [
+                    'class' => 'input-type',
+                ],
             ])
             ->add('message', TextareaType::class, [
                 'attr' => [
-                    'class' => '',
+                    'class' => 'input-type input-msg',
                 ],
                 'label' => 'Veuillez expliqué rapidement pourquoi vous souhaitez ce rendez-vous',
                 'label_attr' => [
@@ -51,6 +60,9 @@ class ReservationType extends AbstractType
                 'choices' => [
                     'Sur place' => 'Sur place',
                     'Par téléphone' => 'Par téléphone',
+                ],
+                'attr' => [
+                    'class' => 'preference-radio',
                 ],
                 'expanded' => true,
                 'multiple' => false,
@@ -73,7 +85,12 @@ class ReservationType extends AbstractType
     
                 $form->remove('user_id');
             })
-            ->add('Envoyer', SubmitType::class)
+            ->add('Envoyer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'button',
+                ],
+                'label' => 'Envoyer ma réservation'
+            ])
         ;
     }
 
