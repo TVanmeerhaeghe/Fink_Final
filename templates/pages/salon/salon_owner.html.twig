@@ -5,23 +5,47 @@
 
 {% block body %}
 	{% if not salons.items is same as([]) %}
+	<div class="title-page">
 		<h1>Mes salons</h1>
+	</div>
 
-		<div>
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		<table class="table">
+		<thead>
+			<tr>
+				<th>Salon</th>
+				<th>Ville</th>
+				<th>Description</th>
+				<th>Style</th>
+				<th>Modifier</th>
+			</tr>
+		</thead>
+		<tbody>
 			{% for salon in salons %}
-				<div>
-					<h4>{{salon.nom}}</h4>
-					<p>{{salon.ville}}</p>
-					<p>{{salon.style}}</p>
-					<a href="{{ path('salon.edit', {id : salon.id}) }}">Modifier ce salon</a>
-				</div>
+				<tr>
+					<td>{{salon.nom}}</td>
+					<td>{{salon.ville}}</td>
+					<td>{{salon.description|slice(0, 100) ~ '...' }}</td>
+					<td>{{salon.style}}</td>
+					<td><a class="button"  href="{{ path('salon.edit', {id : salon.id}) }}">Modifier ce salon</a></td>
+				</tr>
 			{% endfor %}
-		</div>
+		</tbody>
+		</table>
+
 		<div>
 			{{ knp_pagination_render(salons) }}
 		</div>
 	{% else %}
-		<h4>Vous ne possédez actuellement aucun salon enregistré chez nous</h4>
-		<a href="{{ path('contact.partenariat')}}">Devenir partenaire ?</a>
+		<div class="no-element">
+			<img src="/images/global/rien-ici.jpg" class="">
+			<h4>Vous ne possédez actuellement aucun salon enregistré chez nous</h4>
+			<a href="{{ path('contact.partenariat')}}" class="button">Devenir partenaire ?</a>
+		</div>
 	{% endif %}
 {% endblock %}

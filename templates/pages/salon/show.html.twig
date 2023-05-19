@@ -5,21 +5,39 @@
 {% endblock %}
 
 {% block body %}
-		<img class="img-salon" src="{{asset(salon.image)}}">
+	<img class="img-salon" src="{{asset(salon.image)}}">
 	<div class="salon">
 			<div class="salon-contenu box">
-				<h4>{{salon.nom}}</h4>
-				<p>{{salon.ville}}</p>
-				<p>{{salon.style}}</p>
-				<p>{{salon.adresse}}</p>
-				<p>{{salon.telephone}}</p>
-				<p>{{salon.email}}</p>
+				<section class="salon-contenu-infos">
+					<h4>{{salon.nom}}</h4>
+					<p>{{salon.ville}}</p>
+					<p>{{salon.style}}</p>
+					<p>{{salon.adresse}}</p>
+					<p>{{salon.telephone}}</p>
+					<p>{{salon.email}}</p>
+				</section>
 			</div>
 		<div class="sujet-salon box">
-			<p>{{salon.description}}</p>
-			<p>Propiétaire : {{ salon.proprietaire.nom }} {{ salon.proprietaire.prenom }}</p>
-
-			<a class="button" href="{{ path('reservation.index',{id : salon.id})}}">Prendre rendez-vous pour discuter de votre projet</a>
+			<section class="sujet-salon-infos">
+				<p class="salon-description">{{salon.description}}</p>
+				<p class="salon-propietaire">Propiétaire : {{ salon.proprietaire.nom }} {{ salon.proprietaire.prenom }}</p>
+				<a class="button" href="{{ path('reservation.index',{id : salon.id})}}">Prendre rendez-vous pour discuter de votre projet</a>
+			</section>
 		</div>
 	</div>
+	<section class="last-real mb-100">
+		<h3>Les derniéres réalisations de {{salon.nom}}</h3>
+		<div class="carousel">
+			<div class="carousel-container">
+				<img src="/images/global/carou1.jpg" class="carousel-image active">
+				<img src="/images/global/carou2.jpg" class="carousel-image">
+				<img src="/images/global/carou3.jpg" class="carousel-image">
+			</div>
+			<div class="carousel-buttons">
+				<button class="prev-button"></button>
+				<button class="next-button"></button>
+			</div>
+		</div>
+	</section>
+
 {% endblock %}

@@ -5,7 +5,9 @@
 
 {% block body %}
 	{% if not reservations.items is same as([]) %}
+	<div class="title-page">
 		<h1>Vos réservations</h1>
+	</div>
 
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success mt-4">
@@ -13,27 +15,42 @@
 			</div>
 		{% endfor %}
 
+		<table class="table">
+		<thead>
+			<tr>
+				<th>Salon</th>
+				<th>Date</th>
+				<th>Pourquoi ?</th>
+				<th>Préférence</th>
+				<th>Confirmer ?</th>
+				<th>Annuler ?</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for reservation in reservations %}
+			<tr>
+				<td>{{reservation.salon.nom}}</td>
+				<td>{{reservation.date|date('d/m/Y')}}</td>
+				<td>{{reservation.message}}</td>
+				<td>{{reservation.preference}}</td>
+				{% if reservation.isConfirmed == false %}
+					<td>Pas encore confirmer par le salon</td>
+					<td class="delete-reservation"><a class="button red" href="{{path('reservation.delete',{id : reservation.id})}}">Annuler</a></td>
+				{% else %}
+					<td>Confirmé par le salon</td>
+					<td>Contacté le salon pour annuler</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+		</tbody>
+		</table>
 		<div>
-			{% for reservation in reservations %}
-				<div>
-					<h4>{{reservation.salon.nom}}</h4>
-					<p>{{reservation.date|date('d/m/Y')}}</p>
-					<p>{{reservation.message}}</p>
-					<p>{{reservation.preference}}</p>
-					{% if reservation.isConfirmed == false %}
-						<p>Votre réservation n'as pas  encore été confirmé par le salon</p>
-						<a href="{{path('reservation.delete',{id : reservation.id})}}">Annuler ma réservation</a>
-					{% else %}
-						<p>Confirmé par le salon</p>
-						<p>Si la confirmation à été confirmé par le salon, merci de le contacter directement si vous souhaitez l'annulé</p>
-					{% endif %}
-
-				</div>
-			{% endfor %}
-			<div>
-				{{ knp_pagination_render(reservations) }}
-			</div>
-		{% else %}
-			<h4>Vous n'avez aucune réservation actuellement</h4>
-		{% endif %}
-	{% endblock %}
+			{{ knp_pagination_render(reservations) }}
+		</div>
+	{% else %}
+	<div class="no-element">
+		<img src="/images/global/rien-ici.jpg" class="">
+		<h4>Vous n'avez aucune réservation actuellement</h4>
+	</div>
+	{% endif %}
+{% endblock %}

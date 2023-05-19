@@ -84,7 +84,7 @@ class ReservationController extends AbstractController
     public function showSalon(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {
         $queryBuilder = $repository->createQueryBuilder('r')
-        ->innerJoin('r.salon', 's')
+        ->innerJoin('r.Salon', 's')
         ->where('s.Proprietaire = :user_id')
         ->setParameter('user_id', $this->getUser())
         ->orderBy('r.date', 'DESC');

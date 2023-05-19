@@ -35,6 +35,9 @@
 			{{ knp_pagination_render(articles) }}
 		</div>
 	{% else %}
+	<div class="no-element">
+		<img src="/images/global/rien-ici.jpg" class="">
 		<h4>Il n'y a pas d'articles en ce moment</h4>
+	</div>
 	{% endif %}
 {% endblock %}

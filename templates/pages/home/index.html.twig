@@ -27,7 +27,8 @@
 				<div class="how-to-img">
 					<img src="images/global/how-to-img.jpg" alt="Tatouage dos ange">
 				</div>
-				<div></section>
+				<div>
+				</section>
 				<section class="last-salon mt-100 mb-100">
 					<h3>Nos derniers tatoueurs</h3>
 					<div class="last-salon-flex">
@@ -43,6 +44,19 @@
 								</div>
 							{% endif %}
 						{% endfor %}
-						<div></section>
-						<div>
-						{% endblock %}
+				</section>
+				<section class="last-real mb-100">
+					<h3>Les derniéres réalisations de nos tatoueurs</h3>
+					<div class="carousel">
+						<div class="carousel-container">
+							<img src="/images/global/carou1.jpg" class="carousel-image active">
+							<img src="/images/global/carou2.jpg" class="carousel-image">
+							<img src="/images/global/carou3.jpg" class="carousel-image">
+						</div>
+						<div class="carousel-buttons">
+							<button class="prev-button"></button>
+							<button class="next-button"></button>
+						</div>
+					</div>
+				</section>
+{% endblock %}

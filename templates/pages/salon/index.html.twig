@@ -31,7 +31,10 @@
 			{{ knp_pagination_render(salons) }}
 		</div>
 	{% else %}
-		<h4>Il n'y a pas de salon actuellement</h4>
+		<div class="no-element">
+			<img src="/images/global/rien-ici.jpg" class="">
+			<h4>Il n'y a pas de salon actuellement</h4>
+		</div>
 	{% endif %}
 	</div>
 {% endblock %}

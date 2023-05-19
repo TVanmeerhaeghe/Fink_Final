@@ -39,6 +39,9 @@
 				{{ knp_pagination_render(reservations) }}
 			</div>
 		{% else %}
-			<h4>Vous n'avez aucune réservation actuellement</h4>
+			<div class="no-element">
+				<img src="/images/global/rien-ici.jpg" class="">
+				<h4>Vous n'avez aucune réservation actuellement</h4>
+			</div>
 		{% endif %}
 	{% endblock %}

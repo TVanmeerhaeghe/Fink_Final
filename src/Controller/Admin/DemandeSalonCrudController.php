@@ -7,7 +7,6 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -23,7 +22,7 @@ class DemandeSalonCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            //Definis le nom de l'entity quandi l y en a plusieurs
+            //Definis le nom de l'entity quand il y en a plusieurs
             ->setEntityLabelInPlural('Les demandes de partenariats')
             //Pareil mais au singulier
             ->setEntityLabelInSingular('La demande de partenariat')
@@ -35,7 +34,7 @@ class DemandeSalonCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('proprietaire_id')->autocomplete(),
+            AssociationField::new('Propietaire', 'Propriétaire')->setFormTypeOption('disabled', 'disabled'),
             TextField::new('nom'),
             IntegerField::new('telephone'),
             TextField::new('Ville'),
@@ -43,8 +42,8 @@ class DemandeSalonCrudController extends AbstractCrudController
             IntegerField::new('latitude')->hideOnIndex()->hideOnForm(),
             IntegerField::new('longitude')->hideOnIndex()->hideOnForm(),
             TextareaField::new('description')
-            ->hideOnIndex()
-            ->setFormType(CKEditorType::class),
+                ->hideOnIndex()
+                ->setFormType(CKEditorType::class),
             TextField::new('style')->setFormTypeOption('disabled', 'disabled'),
             IntegerField::new('siret')->setFormTypeOption('disabled', 'disabled'),
         ];
