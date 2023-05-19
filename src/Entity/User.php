@@ -62,14 +62,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'Proprietaire', targetEntity: Salon::class)]
     private Collection $salons;
 
-    #[ORM\ManyToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Reservation $reservation = null;
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Reservation::class, orphanRemoval: true)]
+    private Collection $reservations;
 
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
         $this->salons = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -244,19 +245,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getReservation(): ?Reservation
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
     {
-        return $this->reservation;
+        return $this->reservations;
     }
 
-    public function setReservation(Reservation $reservation): self
+    public function addReservation(Reservation $reservation): self
     {
-        // set the owning side of the relation if necessary
-        if ($reservation->getUser() !== $this) {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
             $reservation->setUser($this);
         }
 
-        $this->reservation = $reservation;
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getUser() === $this) {
+                $reservation->setUser(null);
+            }
+        }
 
         return $this;
     }

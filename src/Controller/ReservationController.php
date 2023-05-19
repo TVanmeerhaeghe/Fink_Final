@@ -42,7 +42,7 @@ class ReservationController extends AbstractController
                 $manager->flush();
 
                 $this->addFlash(
-                    'reservation',
+                    'success',
                     'Votre reservation a bien étais envoyer !'
                 );
 
@@ -58,7 +58,7 @@ class ReservationController extends AbstractController
     {
         $reservations = $paginator->paginate(
 
-            $repository->findBy(['user'=>$this->getUser()]),
+            $repository->findBy(['User'=>$this->getUser()]),
             $request->query->getInt('page', 1),
             10
         );
@@ -77,7 +77,7 @@ class ReservationController extends AbstractController
             'Votre réservation a été annulé avec succès !'
         );
 
-        return $this->redirectToRoute('reservation.show.user');
+        return $this->redirectToRoute('reservation.show.user', ['id' => $this->getUser()->getId()]);
     }
 
     #[Route('/reservation/salon/{id}', name: 'reservation.show.salon')]

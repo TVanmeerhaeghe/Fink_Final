@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SalonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -57,14 +59,19 @@ class Salon
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'salon', cascade: ['persist', 'remove'])]
-    private ?Reservation $reservation = null;
-
     #[ORM\Column]
     private ?int $Siret = null;
 
     #[ORM\Column]
     private ?bool $isTrusted = null;
+
+    #[ORM\OneToMany(mappedBy: 'Salon', targetEntity: Reservation::class, orphanRemoval: true)]
+    private Collection $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
     
 
     public function getId(): ?int
@@ -204,23 +211,6 @@ class Salon
         return $this;
     }
 
-    public function getReservation(): ?Reservation
-    {
-        return $this->reservation;
-    }
-
-    public function setReservation(Reservation $reservation): self
-    {
-        // set the owning side of the relation if necessary
-        if ($reservation->getSalon() !== $this) {
-            $reservation->setSalon($this);
-        }
-
-        $this->reservation = $reservation;
-
-        return $this;
-    }
-
     public function getSiret(): ?int
     {
         return $this->Siret;
@@ -241,6 +231,36 @@ class Salon
     public function setIsTrusted(bool $isTrusted): self
     {
         $this->isTrusted = $isTrusted;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setSalon($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getSalon() === $this) {
+                $reservation->setSalon(null);
+            }
+        }
 
         return $this;
     }
