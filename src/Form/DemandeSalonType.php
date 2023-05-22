@@ -164,7 +164,7 @@ class DemandeSalonType extends AbstractType
             ->add('imageFile', VichImageType::class,[
                 'label' => 'Image de la devanture',
                 'label_attr' => [
-                    'class' => 'form-check-label mt-4'
+                    'class' => ''
                 ],
             ])
             ->add('submit', SubmitType::class, [

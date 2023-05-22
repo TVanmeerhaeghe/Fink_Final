@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Salon;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -146,19 +147,11 @@ class SalonType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('Image', TextType:: class, [
-                'attr' => [
-                    'class' => 'input-type',
-                    'minlength' => '2',
-                    'maxlength' => '180',
-                ],
-                'label' => 'Image',
+            ->add('imageFile', VichImageType::class,[
+                'label' => 'Image de la devanture',
                 'label_attr' => [
                     'class' => ''
                 ],
-                'constraints' => [
-                    new Assert\Length(['min' => 2, 'max' => 180]),
-                ]
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
