@@ -105,7 +105,7 @@ class AppFixtures extends Fixture
             // Choisir un propriétaire aléatoire parmi les utilisateurs filtrés
             $proprietaire = $usersWithRole[array_rand($usersWithRole)];
             $salon->setProprietaire($proprietaire)
-            ->setImage('images/salon/tattoo-shop-sign.jpg');
+            ->setImageName('/tattoo-shop-sign.jpg');
         
             $manager->persist($salon);
         }

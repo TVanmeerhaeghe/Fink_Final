@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-	<img class="img-salon" src="{{asset(salon.image)}}">
+	<img class="img-salon" src="{{ vich_uploader_asset(salon, 'imageFile') }}">
 	<div class="salon">
 			<div class="salon-contenu box">
 				<section class="salon-contenu-infos">

@@ -14,7 +14,7 @@
 			{% for salonSearch in salonsSearch %}
 				{% if salonSearch.isTrusted == true %}
 				<div class="last-salon-item box">
-					<img src="{{asset(salonSearch.image)}}">
+					<img src="{{ vich_uploader_asset(salon, 'imageFile') }}">
 					<h4>{{salonSearch.nom}}</h4>
 					<p>{{salonSearch.ville}}</p>
 					<p>{{salonSearch.style}}</p>

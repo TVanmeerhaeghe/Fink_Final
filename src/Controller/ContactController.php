@@ -68,7 +68,7 @@ class ContactController extends AbstractController
             $salon->setTelephone($demande->getTelephone());
             $salon->setVille($demande->getVille());
             $salon->setDescription($demande->getDescription());
-            $salon->setImage($demande->getImage());
+            $salon->setImageName($demande->getImageName());
             $salon->setSiret($demande->getSiret());
             $salon->setStyle($demande->getStyle());
             $salon->setProprietaire($this->getUser());

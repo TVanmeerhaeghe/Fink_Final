@@ -7,9 +7,13 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: DemandeSalonRepository::class)]
 #[UniqueEntity('Email')]
+#[Vich\Uploadable]
+#[ORM\HasLifecycleCallbacks]
 class DemandeSalon
 {
     #[ORM\Id]
@@ -48,11 +52,28 @@ class DemandeSalon
     #[ORM\Column(length: 50)]
     private ?string $Style = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Image = null;
+    #[Vich\UploadableField(mapping: 'salon_images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
 
     #[ORM\Column]
     private ?int $Siret = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTimeImmutable;
+    }
+
+    #[ORM\PrePersist]
+    public function setUpdatedAtValue()
+    {
+        $this->updatedAt = new \DateTimeImmutable;
+    }
 
     public function getId(): ?int
     {
@@ -155,16 +176,28 @@ class DemandeSalon
         return $this;
     }
 
-    public function getImage(): ?string
+    public function setImageFile(?File $imageFile = null): void
     {
-        return $this->Image;
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
-    public function setImage(?string $Image): self
+    public function getImageFile(): ?File
     {
-        $this->Image = $Image;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
     public function getSiret(): ?int
@@ -175,6 +208,18 @@ class DemandeSalon
     public function setSiret(int $Siret): self
     {
         $this->Siret = $Siret;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

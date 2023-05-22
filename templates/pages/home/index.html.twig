@@ -35,7 +35,7 @@
 						{% for salon in salons %}
 							{% if salon.isTrusted == true %}
 								<div class="last-salon-item box">
-									<img src="{{asset(salon.image)}}">
+									<img src="{{ vich_uploader_asset(salon, 'imageFile') }}">
 									<h4>{{salon.nom}}</h4>
 									<p>{{salon.ville}}</p>
 									<p>{{salon.style}}</p>
