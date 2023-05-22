@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class ArticleController extends AbstractController
 {
@@ -25,6 +26,7 @@ class ArticleController extends AbstractController
         return $this->render('pages/articles/index.html.twig', ['articles' => $articles]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/blog/{id}', name: 'blog.show', methods:['GET'])]
     public function show(Article $article): Response
     {

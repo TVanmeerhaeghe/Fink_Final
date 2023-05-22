@@ -13,10 +13,12 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReservationController extends AbstractController
 {
+    #[IsGranted('ROLE_USER')]
     #[Route('/reservation/{id}', name: 'reservation.index')]
     public function reservation(Request $request,EntityManagerInterface $manager, ManagerRegistry $doctrine, int $id): Response
     {
@@ -53,6 +55,7 @@ class ReservationController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/reservation/utilisateur/{id}', name: 'reservation.show.user')]
     public function showUser(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {

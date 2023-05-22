@@ -43,6 +43,7 @@ class SalonController extends AbstractController
         return $this->render('pages/salon/index.html.twig', ['salons' => $salons, 'form' => $form]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/salons/{id}', name: 'salon.show', methods:['GET'])]
     public function show(Salon $salon): Response
     {
