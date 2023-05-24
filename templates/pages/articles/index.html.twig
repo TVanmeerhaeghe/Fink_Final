@@ -19,11 +19,13 @@
 		<div class="container-blog">
 			{% for article in articles %}
 				<div class="articles box">
-					<img src="{{asset(article.image)}}">
+					<img src="{{ vich_uploader_asset(article, 'imageFile') }}">
 					<h4>{{article.titre}}</h4>
 					<p>{{article.sujet}}</p>
 					<div>
-						<p>{{article.contenu|slice(0, 50) ~ '...' }}</p>
+						{% autoescape false %}
+							<p>{{article.contenu|slice(0, 50) ~ '...'}}</p>
+						{% endautoescape %}
 					</div>
 					<small>{{article.date|date('d/m/Y')}}</small>
 					<br>

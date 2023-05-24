@@ -6,12 +6,14 @@
 
 {% block body %}
 	<div class="article">
-		<img src="{{asset(article.image)}}">
+		<img src="{{ vich_uploader_asset(article, 'imageFile') }}">
 		<div class="article-contenu box">
 			<h4>{{article.titre}}</h4>
 			<p class="sujet-article">{{article.sujet}}</p>
 			<div>
-				<p class="contenu-article">{{article.contenu}}</p>
+				{% autoescape false %}
+					<p class="contenu-article">{{article.contenu}}</p>	
+				{% endautoescape %}
 			</div>
 			<small>{{article.date|date('d/m/Y')}}</small>
 		</div>
