@@ -18,7 +18,7 @@ class ArticleController extends AbstractController
     {
         $articles = $paginator->paginate(
 
-            $repository->findAll(),
+            $repository->findBy([], ['date' => 'DESC']),
             $request->query->getInt('page', 1),
             6
         );
