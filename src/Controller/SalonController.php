@@ -32,13 +32,21 @@ class SalonController extends AbstractController
 
             return $this->render('pages/salon/search.html.twig', ['form' => $form->createView(), 'salonsSearch' => $salonsSearch]);
         }
-        
-        $salons = $paginator->paginate(
 
-            $repository->findAll(),
-            $request->query->getInt('page', 1),
-            9
-        );
+        $selectedStyle = $request->query->get('style');
+        if ($selectedStyle) {
+            $salons = $paginator->paginate(
+                $repository->findByStyle($selectedStyle),
+                $request->query->getInt('page', 1),
+                9
+            );
+        } else {
+            $salons = $paginator->paginate(
+                $repository->findAll(),
+                $request->query->getInt('page', 1),
+                9
+            );
+        }
 
         return $this->render('pages/salon/index.html.twig', ['salons' => $salons, 'form' => $form]);
     }

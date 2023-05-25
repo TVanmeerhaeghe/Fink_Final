@@ -42,31 +42,7 @@ class SalonRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Salon[] Returns an array of Salon objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Salon
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-
+    //Méthode perso pour recherche via ville ou style
     public function findBySearch(SearchData $searchData): PaginationInterface
     {
         $data = $this->createQueryBuilder('s');
@@ -83,5 +59,15 @@ class SalonRepository extends ServiceEntityRepository
         $salons = $this->paginatorInterface->paginate($data, $searchData->page, 9);
 
         return $salons;
+    }
+
+    //Méthode perso pour filtrer les salons par style
+    public function findByStyle($selectedStyle)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.Style = :style')
+            ->setParameter('style', $selectedStyle)
+            ->getQuery()
+            ->getResult();
     }
 }

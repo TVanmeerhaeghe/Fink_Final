@@ -11,29 +11,40 @@
 			<div>
 				{% include "components/_search_data.html.twig" with {form:form} %}
 			</div>
-		</section>
-		<section class="last-salon">
-			<div class="last-salon-flex list-salon">
-				{% for salon in salons %}
-					{% if salon.isTrusted == true %}
-						<div class="last-salon-item box">
-							<img src="{{ vich_uploader_asset(salon, 'imageFile') }}">
-							<h4>{{salon.nom}}</h4>
-							<p>{{salon.ville}}</p>
-							<p>{{salon.style}}</p>
-							<a class="button" href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
-						</div>
-					{% endif %}
-				{% endfor %}
+			<div>
+				{% include "components/_filter_salon.html.twig" %}
 			</div>
 		</section>
+			<section class="last-salon">
+				<div class="last-salon-flex list-salon">
+					{% for salon in salons %}
+						{% if salon.isTrusted == true %}
+							<div class="last-salon-item box">
+								<img src="{{ vich_uploader_asset(salon, 'imageFile') }}">
+								<h4>{{salon.nom}}</h4>
+								<p>{{salon.ville}}</p>
+								<p>{{salon.style}}</p>
+								<a class="button" href="{{ path('salon.show', {id: salon.id}) }}">Voir plus</a>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</section>
 		<div>
 			{{ knp_pagination_render(salons) }}
 		</div>
 	{% else %}
-		<div class="no-element">
-			<img src="/images/global/rien-ici.jpg" class="">
-			<h4>Il n'y a pas de salon actuellement</h4>
+		<div class="container-home">
+			<section class="header-error">
+				<h1>Rechercher un<br>tatoueur</h1>
+				<div>
+					{% include "components/_search_data.html.twig" with {form:form} %}
+				</div>
+				<div>
+					{% include "components/_filter_salon.html.twig" %}
+				</div>
+			</section>
+			<h4 class="h4-error">Il n'y a pas de salon correspondant actuellement</h4>
 		</div>
 	{% endif %}
 	</div>
