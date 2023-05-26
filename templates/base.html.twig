@@ -23,7 +23,9 @@
 		{% block header %}
 			{% include '_partials/_header.html.twig' %}
 		{% endblock %}
-		{% block body %}{% endblock %}
+		<div class="main-content">
+			{% block body %}{% endblock %}
+		</div>
 		{% block footer %}
 			{% include '_partials/_footer.html.twig' %}
 		{% endblock %}

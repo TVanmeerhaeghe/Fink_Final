@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
     {
         for ($i=0; $i < 10; $i++) { 
             $article = new Article();
-            $article->setTitre($this->faker->sentence($nbWords = 5, $variableNbWords = true))
+            $article->setTitre($this->faker->sentence($nbWords = 4, $variableNbWords = true))
             ->setSujet($this->faker->sentence($nbWords = 5, $variableNbWords = true))
             ->setContenu($this->faker->paragraph($nbSentences = 20))
             ->setImageName('knucle-tattoos-man.jpg');

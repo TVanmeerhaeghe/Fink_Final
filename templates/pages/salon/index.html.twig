@@ -8,11 +8,13 @@
 	<div class="container-home">
 		<section class="header-wrapper salon-wrapper">
 			<h1>Rechercher un<br>tatoueur</h1>
-			<div>
-				{% include "components/_search_data.html.twig" with {form:form} %}
-			</div>
-			<div>
-				{% include "components/_filter_salon.html.twig" %}
+			<div class="header-salon-search">
+				<div>
+					{% include "components/_search_data.html.twig" with {form:form} %}
+				</div>
+				<div class="filter-salon">
+					{% include "components/_filter_salon.html.twig" %}
+				</div>
 			</div>
 		</section>
 			<section class="last-salon">

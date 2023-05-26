@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Salon;
+use App\Entity\Article;
 use App\Form\SearchType;
 use App\Model\SearchData;
 use App\Repository\SalonRepository;
@@ -26,6 +27,14 @@ class HomeController extends AbstractController
             ->setMaxResults(3)
             ->getQuery()
             ->getResult();
+        
+        $articles = $manager->createQueryBuilder('a')
+            ->select('a')
+            ->from(Article::class, 'a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
 
         $searchData = new SearchData;
         $form = $this->createForm(SearchType::class, $searchData);
@@ -39,7 +48,7 @@ class HomeController extends AbstractController
             return $this->render('pages/salon/search.html.twig', ['form' => $form->createView(), 'salonsSearch' => $salonsSearch]);
         }
 
-        return $this->render('pages/home/index.html.twig', ['form' => $form, 'salons' => $salons]);
+        return $this->render('pages/home/index.html.twig', ['form' => $form, 'salons' => $salons, 'articles' => $articles]);
     }
 
     #[Route('/quiz', 'home.quiz', methods: ['GET'])]

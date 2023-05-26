@@ -149,6 +149,9 @@ class SalonType extends AbstractType
             ])
             ->add('imageFile', VichImageType::class,[
                 'label' => 'Image de la devanture',
+                'attr' => [
+                    'class' => 'button'
+                ],
                 'label_attr' => [
                     'class' => ''
                 ],

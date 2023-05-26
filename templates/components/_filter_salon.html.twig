@@ -1,32 +1,33 @@
 <form action="{{ path('salon.index') }}" method="GET">
-    <label for="style">Choisissez un style</label>
-    <select name="style">
-        <option value="old_school">Old School</option>
-        <option value="new_school">New School</option>
-        <option value="blackwork">Blackwork</option>
-        <option value="dotwork">Dotwork</option>
-        <option value="tribal">Tribal</option>
-        <option value="realiste">Realiste</option>
-        <option value="aquarelle">Aquarelle</option>
-        <option value="neo_traditionnel">Neo-traditionnel</option>
-        <option value="geometrique">Geometrique</option>
-        <option value="trash_polka">Trash Polka</option>
-        <option value="maori">Maori</option>
-        <option value="japonais">Japonais</option>
-        <option value="calligraphie">Calligraphie</option>
-        <option value="minimaliste">Minimaliste</option>
-        <option value="symbole">Symbole</option>
-        <option value="lettrage">Lettrage</option>
-        <option value="ornemental">Ornemental</option>
-        <option value="bio_mecanique">Bio-mecanique</option>
-        <option value="cartoon">Cartoon</option>
-        <option value="portrait">Portrait</option>
-        <option value="graffiti">Graffiti</option>
-        <option value="couleur">Couleur</option>
-        <option value="gravure">Gravure</option>
-        <option value="religieux">Religieux</option>
-        <option value="fantaisie">Fantaisie</option>
-        <option value="abstrait">Abstrait</option>
-    </select>
-    <button type="submit">Filtrer</button>
+    <div class="search-form">
+        <select name="style" class="input-type w-300">
+            <option value="old_school">Old School</option>
+            <option value="new_school">New School</option>
+            <option value="blackwork">Blackwork</option>
+            <option value="dotwork">Dotwork</option>
+            <option value="tribal">Tribal</option>
+            <option value="realiste">Realiste</option>
+            <option value="aquarelle">Aquarelle</option>
+            <option value="neo_traditionnel">Neo-traditionnel</option>
+            <option value="geometrique">Geometrique</option>
+            <option value="trash_polka">Trash Polka</option>
+            <option value="maori">Maori</option>
+            <option value="japonais">Japonais</option>
+            <option value="calligraphie">Calligraphie</option>
+            <option value="minimaliste">Minimaliste</option>
+            <option value="symbole">Symbole</option>
+            <option value="lettrage">Lettrage</option>
+            <option value="ornemental">Ornemental</option>
+            <option value="bio_mecanique">Bio-mecanique</option>
+            <option value="cartoon">Cartoon</option>
+            <option value="portrait">Portrait</option>
+            <option value="graffiti">Graffiti</option>
+            <option value="couleur">Couleur</option>
+            <option value="gravure">Gravure</option>
+            <option value="religieux">Religieux</option>
+            <option value="fantaisie">Fantaisie</option>
+            <option value="abstrait">Abstrait</option>
+        </select>
+        <button type="submit" class="button">Filtrer</button>
+    </div>
 </form>

@@ -59,4 +59,20 @@
 						</div>
 					</div>
 				</section>
+				<section class="last-salon mt-70 mb-100">
+					<h3>Nos derniers articles</h3>
+					<div class="last-salon-flex">
+						{% for article in articles %}
+							<div class="last-salon-item box">
+								<img src="{{ vich_uploader_asset(article, 'imageFile') }}">
+								<h4>{{article.titre|slice(0, 30) ~ '...'}}</h4>
+								<p>{{article.sujet|slice(0, 50) ~ '...'}}</p>
+								{% autoescape false %}
+									<p>{{article.contenu|slice(0, 50) ~ '...'}}</p>
+								{% endautoescape %}
+								<small>{{article.date|date('d/m/Y')}}</small>
+								<a class="button" href="{{ path('blog.show', {id: article.id}) }}">Voir plus</a>
+							</div>
+						{% endfor %}
+				</section>
 {% endblock %}
