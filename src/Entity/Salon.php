@@ -44,6 +44,7 @@ class Salon
     private ?string $Ville = null;
 
     #[ORM\ManyToOne(inversedBy: 'salons')]
+    #[Assert\NotBlank()]
     private ?User $Proprietaire = null;
 
     #[ORM\Column(length: 180)]
@@ -58,6 +59,7 @@ class Salon
     private ?string $longitude = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
     private ?string $Style = null;
 
     #[Vich\UploadableField(mapping: 'salon_images', fileNameProperty: 'imageName')]
@@ -67,6 +69,7 @@ class Salon
     private ?string $imageName = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?int $Siret = null;
 
     #[ORM\Column]
