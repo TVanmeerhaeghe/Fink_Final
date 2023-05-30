@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ReservationController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
-    #[Route('/reservation/{id}', name: 'reservation.index')]
+    #[Route('/reservation/{id}', name: 'reservation.index', methods: ['GET', 'POST'])]
     public function reservation(Request $request,EntityManagerInterface $manager, ManagerRegistry $doctrine, int $id): Response
     {
         $salonRepository = $doctrine->getRepository(Salon::class); 
@@ -56,7 +56,7 @@ class ReservationController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/reservation/utilisateur/{id}', name: 'reservation.show.user')]
+    #[Route('/reservation/utilisateur/{id}', name: 'reservation.show.user', methods: ['GET', 'POST'])]
     public function showUser(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {
         $reservations = $paginator->paginate(
@@ -69,6 +69,7 @@ class ReservationController extends AbstractController
         return $this->render('pages/reservation/show_user.html.twig', ['reservations' => $reservations]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/reservation/utilisateur/supression/{id}', name: 'reservation.delete', methods:['GET'])]
     public function delete(EntityManagerInterface $manager, Reservation $reservation): Response
     {
@@ -83,7 +84,8 @@ class ReservationController extends AbstractController
         return $this->redirectToRoute('reservation.show.user', ['id' => $this->getUser()->getId()]);
     }
 
-    #[Route('/reservation/salon/{id}', name: 'reservation.show.salon')]
+    #[IsGranted('ROLE_TATOUEUR')]
+    #[Route('/reservation/salon/{id}', name: 'reservation.show.salon', methods: ['GET', 'POST'])]
     public function showSalon(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {
         $queryBuilder = $repository->createQueryBuilder('r')

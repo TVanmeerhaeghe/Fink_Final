@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact.index')]
+    #[Route('/contact', name: 'contact.index', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $manager): Response
     {
         $contact = new Contact();
@@ -50,7 +50,7 @@ class ContactController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/contact/demande_partenariat', name: 'contact.partenariat')]
+    #[Route('/contact/demande_partenariat', name: 'contact.partenariat', methods: ['GET', 'POST'])]
     public function demandeSalon(Request $request, EntityManagerInterface $manager): Response
     {
         $demande = new DemandeSalon();
