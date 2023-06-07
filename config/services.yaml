@@ -19,7 +19,7 @@ services:
       - "../src/DependencyInjection/"
       - "../src/Entity/"
       - "../src/Kernel.php"
-  # Definis un namespace pour mes ENtityListener pour que ce soit utilisable partout
+  # Definis un namespace pour mes EntityListener pour que ce soit utilisable partout
   App\EntityListener\:
     #Qui utilise les fichier dans ce dossier
     resource: "../src/EntityListener/"

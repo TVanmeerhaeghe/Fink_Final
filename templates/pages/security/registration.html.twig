@@ -8,6 +8,12 @@
 	<div class="container-form box">
 		<h1>Formulaire d'inscription</h1>
 
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
+
 		{{ form(form) }}
 
 	</div>
