@@ -24,7 +24,7 @@ class ArticleCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            //Definis le nom de l'entity quandi l y en a plusieurs
+            //Definis le nom de l'entité quand il y en a plusieurs
             ->setEntityLabelInPlural('Les articles')
             //Pareil mais au singulier
             ->setEntityLabelInSingular('article')

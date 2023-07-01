@@ -60,7 +60,6 @@ class SalonController extends AbstractController
 
     #[IsGranted('ROLE_TATOUEUR')]
     #[Route('/mes-salons', name: 'salon.list', methods:['GET'])]
-    //Fonction qui apelle toutes les recettes
     public function showMine(SalonRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $salons = $paginator->paginate(
@@ -72,7 +71,7 @@ class SalonController extends AbstractController
         return $this->render('pages/salon/salon_owner.html.twig', ['salons' => $salons]);
     }
 
-    #[Security("is_granted('ROLE_USER') and user === salon.getProprietaire()")]
+    #[Security("is_granted('ROLE_TATOUEUR') and user === salon.getProprietaire()")]
     #[Route('/salons/edition/{id}', name: 'salon.edit', methods:['GET', 'POST'])]
     public function edit(Salon $salon, Request $request, EntityManagerInterface $manager): Response
     {

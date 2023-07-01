@@ -30,13 +30,6 @@ class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $existingReservation = $salon->getReservation()->filter(function ($r) use ($reservation) {
-            //     return $r->getDate() == $reservation->getDate();
-            // })->first();
-
-            // if ($existingReservation) {
-            //     $form->get('date')->addError(new FormError('Ce salon n\'est pas disponible a ce moment la'));
-            // // } else {
                 $reservation->setUser($this->getUser());
                 $reservation->setSalon($salon);
                 $reservation->setIsConfirmed(false);
@@ -89,10 +82,10 @@ class ReservationController extends AbstractController
     public function showSalon(ReservationRepository $repository, PaginatorInterface $paginator, Request $request)
     {
         $queryBuilder = $repository->createQueryBuilder('r')
-        ->innerJoin('r.Salon', 's')
-        ->where('s.Proprietaire = :user_id')
-        ->setParameter('user_id', $this->getUser())
-        ->orderBy('r.date', 'DESC');
+            ->innerJoin('r.Salon', 's')
+            ->where('s.Proprietaire = :user_id')
+            ->setParameter('user_id', $this->getUser())
+            ->orderBy('r.date', 'DESC');
 
         $reservations = $paginator->paginate(
 
