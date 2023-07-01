@@ -18,6 +18,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home.index', methods: ['GET', 'POST'])]
     public function index(Request $request, SalonRepository $repository, EntityManagerInterface $manager): Response
     {
+        //Récupére les trois derniers salons
         $salons = $manager->createQueryBuilder()
             ->select('s')
             ->from(Salon::class, 's')
@@ -28,6 +29,7 @@ class HomeController extends AbstractController
             ->getQuery()
             ->getResult();
         
+        //Récupére les trois derniers articles
         $articles = $manager->createQueryBuilder('a')
             ->select('a')
             ->from(Article::class, 'a')

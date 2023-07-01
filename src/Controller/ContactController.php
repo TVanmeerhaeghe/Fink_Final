@@ -21,6 +21,7 @@ class ContactController extends AbstractController
     {
         $contact = new Contact();
 
+        //Récupére l'utilisateur connecté
         if($this->getUser()) {
             $contact->setNom($this->getUser()->getNom())
             ->setPrenom($this->getUser()->getPrenom())
@@ -61,7 +62,8 @@ class ContactController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $demande->setPropietaire($this->getUser());
             $demande = $form->getData();
-
+            
+            //Envoie dans Salon aussi
             $salon->setNom($demande->getNom());
             $salon->setEmail($demande->getEmail());
             $salon->setAdresse($demande->getAdresse());
