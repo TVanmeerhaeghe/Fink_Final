@@ -91,7 +91,7 @@ class RegistrationType extends AbstractType
                     ],
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du Mot de passe :',
+                    'label' => 'Confirmation du mot de passe :',
                     'label_attr' => [
                         'class' => ''
                     ],

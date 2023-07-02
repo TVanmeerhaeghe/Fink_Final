@@ -18,7 +18,7 @@
 					<h4>{{salonSearch.nom}}</h4>
 					<p>{{salonSearch.ville}}</p>
 					<p>{{salonSearch.style}}</p>
-					<a class="button" href="{{ path('salon.show', {id: salonSearch.id}) }}">Voir plus</a>
+					<a class="button" href="{{ path('salon.show', {id: salonSearch.id}) }}">Découvrir</a>
 				</div>
 				{% endif %}
 			{% endfor %}
@@ -26,7 +26,7 @@
 		</section>
 	{% else %}
 		<section class="salon-not-found box">
-			<h4>Nous ne disposons pas de salon affilier dans cette ville.</h4>
+			<h4>Nous ne disposons pas de salon affilié dans cette ville.</h4>
 			<a class="button" href="">Rechercher dans une autre ville ?</a>
 		</section>
 	{% endif %}

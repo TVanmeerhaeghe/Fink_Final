@@ -32,7 +32,7 @@ class UserController extends AbstractController
     
                 $this->addFlash(
                     'success',
-                    'Votre profil à bien été modifié !'
+                    'Votre profil a bien été modifié !'
                 );
     
             } else {
@@ -68,7 +68,7 @@ class UserController extends AbstractController
     
                 $this->addFlash(
                     'success',
-                    'Votre mot de passe à été modifié avec succés'
+                    'Votre mot de passe a été modifié avec succès'
                 );
                 
             } else {

@@ -35,7 +35,6 @@ class SearchType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => SearchData::class
-            // Configure your form options here
         ]);
     }
 }

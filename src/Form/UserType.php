@@ -91,7 +91,7 @@ class UserType extends AbstractType
                     ],
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du Mot de passe',
+                    'label' => 'Confirmation du mot de passe',
                     'label_attr' => [
                         'class' => ''
                     ],
@@ -99,7 +99,7 @@ class UserType extends AbstractType
                         'class' => 'input-type',
                     ],
                 ],
-                'invalid_message' => 'Les mots de passes ne corresponde pas'
+                'invalid_message' => 'Les mots de passe ne correspondent pas'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

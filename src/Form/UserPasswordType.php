@@ -27,7 +27,7 @@ class UserPasswordType extends AbstractType
                 ],
             ],
             'second_options' => [
-                'label' => 'Confirmation du Mot de passe',
+                'label' => 'Confirmation du mot de passe',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -35,13 +35,13 @@ class UserPasswordType extends AbstractType
                     'class' => 'input-type',
                 ],
             ],
-            'invalid_message' => 'Les mots de passes ne correspondent pas'
+            'invalid_message' => 'Les mots de passe ne correspondent pas'
             ])
             ->add('newPassword', PasswordType::class, [
                 'attr' => [
                     'class' => 'input-type',
                 ],
-                'label' => 'Nouveau Mot de passe',
+                'label' => 'Nouveau mot de passe',
                 'label_attr' => [
                     'class' => ''
                 ],

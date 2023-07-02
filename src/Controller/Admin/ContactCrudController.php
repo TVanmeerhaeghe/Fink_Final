@@ -21,10 +21,10 @@ class ContactCrudController extends AbstractCrudController
     {
         return $crud
             //Definis le nom de l'entity quandi l y en a plusieurs
-            ->setEntityLabelInPlural('Les demandes de contacts')
+            ->setEntityLabelInPlural('Les demandes de contact')
             //Pareil mais au singulier
             ->setEntityLabelInSingular('La demande de contact')
-            ->setPageTitle("index", "Fink - Administration des des demandes de contact")
+            ->setPageTitle("index", "Fink - Administration des demandes de contact")
             ->setPaginatorPageSize(20);       
     }
 

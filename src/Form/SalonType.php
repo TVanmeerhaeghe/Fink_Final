@@ -41,7 +41,7 @@ class SalonType extends AbstractType
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
-                'label' => 'Adresse du salon',
+                'label' => 'Adresse',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -57,7 +57,7 @@ class SalonType extends AbstractType
                     'max' => 999999999,
                 ],
                 'required' => false,
-                'label' => 'Téléphone du salon',
+                'label' => 'Téléphone',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -69,7 +69,7 @@ class SalonType extends AbstractType
                 'attr' => [
                     'class' => 'input-type input-msg',
                 ],
-                'label' => 'Une description rapide du salon',
+                'label' => 'Description rapide',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -139,7 +139,7 @@ class SalonType extends AbstractType
                 'attr' => [
                     'class' => 'input-type',
                 ],
-                'label' => 'Quels style  de tatouage pratiqué vous principalement ?',
+                'label' => 'Quel style de tatouages pratiquez vous principalement ?',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -148,7 +148,7 @@ class SalonType extends AbstractType
                 ]
             ])
             ->add('imageFile', VichImageType::class,[
-                'label' => 'Image de la devanture',
+                'label' => 'Photo de la devanture',
                 'attr' => [
                     'class' => 'button'
                 ],

@@ -6,7 +6,7 @@
 {% block body %}
 	<div class="container-home">
 		<section class="header-wrapper">
-			<h1>Trouve le tatoueur<br> de tes reves en 3 clics :</h1>
+			<h1>Trouve le tatoueur<br> de tes rêves en 3 clics :</h1>
 			<div class="example-wrapper">
 				{% include "components/_search_data.html.twig" with {form:form} %}
 			</div>
@@ -15,7 +15,7 @@
 
 			<div class="how-to-box">
 				<div class="how-to-text">
-					<h3>Comment ça<br>
+					<h3>Comment<br>
 						fonctionne Fink ?</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra sapien quis mauris tincidunt, vel bibendum lorem mollis.<br>
 						Aliquam vel aliquet velit, eget convallis magna. Maecenas vel massa nec magna semper pretium.<br>
@@ -30,7 +30,7 @@
 				<div>
 				</section>
 				<section class="last-salon mt-100 mb-100">
-					<h3>Nos derniers tatoueurs</h3>
+					<h3>Nos derniers salons partenaires</h3>
 					<div class="last-salon-flex">
 						{% for salon in salons %}
 							{% if salon.isTrusted == true %}
@@ -40,13 +40,13 @@
 									<p>{{salon.ville}}</p>
 									<p>{{salon.style}}</p>
 									<p>{{salon.description|slice(0, 100) ~ '...' }}</p>
-									<a class="button" href="{{ path('salon.show', {id: salon.id}) }}">Le découvrir</a>
+									<a class="button" href="{{ path('salon.show', {id: salon.id}) }}">Découvrir</a>
 								</div>
 							{% endif %}
 						{% endfor %}
 				</section>
 				<section class="last-real mb-100">
-					<h3>Les derniéres réalisations de nos tatoueurs</h3>
+					<h3>Les dernières réalisations de nos tatoueurs</h3>
 					<div class="carousel">
 						<div class="carousel-container">
 							<img src="/images/global/carou1.jpg" class="carousel-image active">

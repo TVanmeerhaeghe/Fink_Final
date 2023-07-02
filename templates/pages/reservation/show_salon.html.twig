@@ -16,7 +16,7 @@
 					<th>Date</th>
 					<th>Pourquoi ?</th>
 					<th>Préférence</th>
-					<th>Confirmé le rendez-vous ?</th>
+					<th>Confirmer le rendez-vous ?</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,9 +27,9 @@
 					<td>{{reservation.message}}</td>
 					<td>{{reservation.preference}}</td>
 					{% if reservation.isConfirmed == false %}
-						<td><a class="button" href="{{path('reservation.confirm.salon',{id : reservation.id})}}">Confirmé ?</a></td>
+						<td><a class="button" href="{{path('reservation.confirm.salon',{id : reservation.id})}}">Confirmer ?</a></td>
 					{% else %}
-						<td>Confirmé</td>
+						<td>Confirmer</td>
 					{% endif %}
 				</tr>
 			{% endfor %}

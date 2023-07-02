@@ -48,7 +48,7 @@ class ReservationType extends AbstractType
                 'attr' => [
                     'class' => 'input-type input-msg',
                 ],
-                'label' => 'Veuillez expliqué rapidement pourquoi vous souhaitez ce rendez-vous',
+                'label' => 'Veuillez expliquer rapidement pourquoi vous souhaitez ce rendez-vous',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -64,6 +64,7 @@ class ReservationType extends AbstractType
                 'attr' => [
                     'class' => 'preference-radio',
                 ],
+                'label' => 'Préférence',
                 'expanded' => true,
                 'multiple' => false,
                 'constraints' => [

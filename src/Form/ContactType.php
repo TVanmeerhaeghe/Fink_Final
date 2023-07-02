@@ -38,7 +38,7 @@ class ContactType extends AbstractType
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
-                'label' => 'Prenom',
+                'label' => 'Prénom',
                 'label_attr' => [
                     'class' => ''
                 ],
