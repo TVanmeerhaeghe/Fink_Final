@@ -38,7 +38,7 @@ class ReservationController extends AbstractController
 
                 $this->addFlash(
                     'success',
-                    'Votre reservation a bien étais envoyer !'
+                    'Votre reservation a bien été envoyée !'
                 );
 
             // }
@@ -71,7 +71,7 @@ class ReservationController extends AbstractController
 
         $this->addFlash(
             'success',
-            'Votre réservation a été annulé avec succès !'
+            'Votre réservation a été annulée avec succès !'
         );
 
         return $this->redirectToRoute('reservation.show.user', ['id' => $this->getUser()->getId()]);
