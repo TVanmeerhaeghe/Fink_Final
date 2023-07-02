@@ -507,6 +507,7 @@ div.vich-image a:nth-of-type(2):hover {
 .salon-wrapper {
   background-image: url("/images/global/salon-wrapper.jpg") !important;
   min-height: 400px !important;
+  background-position-y: -444px;
 }
 .salon-not-found {
   margin-top: -20px;

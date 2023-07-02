@@ -30,18 +30,16 @@ class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-                $reservation->setUser($this->getUser());
-                $reservation->setSalon($salon);
-                $reservation->setIsConfirmed(false);
-                $manager->persist($reservation);
-                $manager->flush();
+            $reservation->setUser($this->getUser());
+            $reservation->setSalon($salon);
+            $reservation->setIsConfirmed(false);
+            $manager->persist($reservation);
+            $manager->flush();
 
-                $this->addFlash(
-                    'success',
-                    'Votre reservation a bien été envoyée !'
-                );
-
-            // }
+            $this->addFlash(
+                'success',
+                'Votre reservation a bien été envoyée !'
+            );
         }
         return $this->render('pages/reservation/index.html.twig', [
             'salon' => $salon, 'form' => $form
