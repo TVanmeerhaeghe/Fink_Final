@@ -18,6 +18,6 @@ class HomePageTest extends WebTestCase
         $carousel = $crawler->filter('.carousel-image');
         $this->assertEquals(3, count($carousel));
 
-        $this->assertSelectorTextContains('h1', 'Trouve le tatoueur de tes reves en 3 clics :');
+        $this->assertSelectorTextContains('h1', 'Trouve le tatoueur de tes rêves en 3 clics :');
     }
 }

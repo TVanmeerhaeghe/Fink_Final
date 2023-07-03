@@ -16,7 +16,7 @@ class LoginTest extends WebTestCase
 
         $form = $crawler->filter("form[name=login]")->form([
             "_username" => "admin@fink.fr",
-            "_password" => "password"
+            "_password" => $_ENV['ACCOUNT_PASSWORD']
         ]);
 
         $client->submit($form);
@@ -37,7 +37,7 @@ class LoginTest extends WebTestCase
 
         $form = $crawler->filter("form[name=login]")->form([
             "_username" => "adminfink.fr",
-            "_password" => "password"
+            "_password" => "wrongpassword"
         ]);
 
         $client->submit($form);

@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
             ->setPrenom('admin')
             ->setEmail('admin@fink.fr')
             ->setRoles(['ROLE_USER', 'ROLE_ADMIN', 'ROLE_TATOUEUR'])
-            ->setPlainPassword('password');
+            ->setPlainPassword($_ENV['ACCOUNT_PASSWORD']);
 
         $users[] = $admin;
         $manager->persist($admin);
@@ -49,7 +49,7 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setEmail($this->faker->email())
             ->setRoles($this->faker->randomElement([['ROLE_USER'], ['ROLE_USER', 'ROLE_TATOUEUR']]))
-            ->setPlainPassword('password')
+            ->setPlainPassword($_ENV['ACCOUNT_PASSWORD'])
             ->setNom($this->faker->firstName())
             ->setPrenom($this->faker->lastName())
             ->setTelephone($this->faker->numberBetween(100000000, 999999999));

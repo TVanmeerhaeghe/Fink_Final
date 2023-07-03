@@ -37,6 +37,6 @@ class PartenariatTest extends WebTestCase
 
         $client->followRedirect();
 
-        $this->assertSelectorTextContains('div.alert-success', 'Votre demande à été envoyé avec succès ! Nos équipes reviendrons vers vous une fois les vérification faite');
+        $this->assertSelectorTextContains('div.alert-success', 'Votre demande a été envoyée avec succès ! Nos équipes reviendront vers vous une fois les vérifications faites');
     }
 }
